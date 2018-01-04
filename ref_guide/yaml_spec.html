@@ -1,0 +1,6430 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Greenplum MapReduce规范 |
+    Greenplum数据库文档
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="docs docs_ref_guide docs_ref_guide_yaml_spec has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum数据库文档</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="http://greenplum.org">返回Greenplum数据库</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    文档索引
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/docs/common/gpdb-features.html">关于此文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/best_practices/intro.html">最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/workloads.html">内存和负载管理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/bloat.html">在数据库中管理膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/data_loading.html">装载数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/gptransfer.html">用gptransfer迁移数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/kerberos-hdfs.html">访问Kerberos化的Hadoop集群</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/tuning_queries.html">调优SQL查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/ha.html">高可用</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/security-guide/topics/preface.html">安全性配置指南</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/SecuringGPDB.html">保护数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/ports_and_protocols.html">Greenplum数据库端口和协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Authenticate.html">配置客户端认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Authorization.html">配置数据库授权</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/审计.html">审计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/kerberos-hdfs.html">用受Kerberos保护的Hadoop集群启用gphdfs认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/BestPractices.html">安全性 最佳实践</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-system-level.html">在系统级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-database-level.html">在数据库级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-role-level.html">在角色级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-in-a-session.html">在会话中设置参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-connection-and-authentication-parameters.html">连接和认证参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-connection-parameters.html">连接参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-security-and-authentication-parameters.html">安全性和认证参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-system-resource-consumption-parameters.html">系统资源消耗参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-memory-consumption-parameters.html">内存消耗参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-free-space-map-parameters.html">空闲空间映射参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-os-resource-parameters.html">操作系统资源参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-cost-based-vacuum-delay-parameters.html">基于代价的清理延迟参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-transaction-id-management-parameters.html">事务ID管理参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-query-tuning-parameters.html">查询调节参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/gporca-parameters.html">GPORCA 配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-query-plan-operator-control-parameters.html">查询计划操作符控制参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-query-planner-costing-parameters.html">传统查询优化器代价参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-database-statistics-sampling-parameters.html">数据库统计信息采样参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-sort-operator-configuration-parameters.html">排序操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-aggregate-operator-configuration-parameters.html">聚集操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-join-operator-configuration-parameters.html">连接操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-other-query-planner-configuration-parameters.html">其他传统查询优化器配置参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-error-reporting-and-logging-parameters.html">错误报告和日志参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-log-rotation.html">日志轮转</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-when-to-log.html">什么时候记录日志</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-what-to-log.html">记录什么</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-system-monitoring-parameters.html">系统监控参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-snmp-alerts.html">SNMP报警</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-email-alerts.html">Email报警</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-command-center-agent.html">Greenplum命令中心代理</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-runtime-statistics-collection-parameters.html">运行时统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-automatic-statistics-collection-parameters.html">自动统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-client-connection-default-parameters.html">客户端连接默认参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-statement-behavior-parameters.html">语句行为参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-locale-and-formatting-parameters.html">区域和格式化参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-other-client-default-parameters.html">其他客户端默认参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-lock-management-parameters.html">锁管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-workload-management-parameters.html">负载管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-external-table-parameters.html">外部表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-append-optimized-table-parameters.html">数据库表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-database-and-tablespace-filespace-parameters.html">数据库和表空间&#x2F;文件空间参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-past-postgresql-version-compatibility-parameters.html">以往的PostgreSQL版本兼容参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-greenplum-array-configuration-parameters.html">Greenplum阵列配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-interconnect-configuration-parameters.html">Interconnect配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-dispatch-configuration-parameters.html">分派配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-fault-operation-parameters.html">错误操作参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-distributed-transaction-management-parameters.html">分布式事务管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-read-only-parameters.html">只读参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-master-mirroring-parameters.html">Greenplum的Master和Segment镜像参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-extension-parameters.html">Greenplum数据库扩展参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用特性</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-fault-detection-and-recovery.html">故障检测与恢复概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测失效的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-alerts-and-notifications.html">启用告警和通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检查失效的Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-checking-the-log-files.html">为失效Segment检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复失效的Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment失效中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/gprecover-steps.html">关于Segment恢复处理</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复失效的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-gpcrondump.html">用gpcrondump备份</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-sets.html">备份表集合</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-incremental.html">创建增量备份</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-locks.html">备份处理和锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-direct-io.html">使用直接I&#x2F;O</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-named-pipes.html">使用命名管道</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-veritas.html">用Veritas NetBackup备份数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/restore-parallel.html">恢复Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/gpdbrestore.html">使用gpdbrestore恢复数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/restore-diff-system.html">恢复到不同的Greenplum系统配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/expand/expand-main.html">扩展Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-overview.html">系统扩展概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-planning.html">规划Greenplum系统扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-nodes.html">准备并且增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-initialize.html">初始化新Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-rm-schema.html">移除扩展方案</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/gptransfer.html">用gptransfer迁移数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/monitoring/monitoring.html">推荐的监控和维护任务</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partIII.html">管理Greenplum数据库访</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos-lin-client.html">为Linux客户端配置Kerberos</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos-win-client.html">为Windows客户端配置Kerberos</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/roles_privs.html">管理角色和特权</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partIV.html">使用数据库</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-schema.html">创建和管理方案</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/dml.html">管理数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-working-with-file-based-ext-tables.html">使用基于文件的外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-external-tables.html">访问基于文件的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gphdfs-protocol.html">gphdfs:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-s3-protocol.html">s3:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-about-gpfdist-setup-and-performance.html">有关gpfdist设置和性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-controlling-segment-parallelism.html">控制Segment并行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-installing-gpfdist.html">安装gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-starting-and-stopping-gpfdist.html">启动和停止gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-troubleshooting-gpfdist.html">解决gpfdist的问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-hadoop-distributed-file-system--hdfs--tables.html">使用Hadoop分布式文件系统（HDFS）表</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-one-time-hdfs-protocol-installation.html">一次性HDFS协议安装</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-grant-privileges-for-the-hdfs-protocol.html">为HDFS协议授予特权</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-specify-hdfs-data-in-an-external-table-definition.html">在外部表定义中指定HDFS数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-setting-compression-options-for-hadoop-writable-external-tables.html">为Hadoop可写外部表设置压缩选项</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-readable-and-writable-external-table-examples.html">HDFS可读和可写外部表实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-reading-and-writing-custom-formatted-hdfs-data.html">读写自定义格式的HDFS数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-read-custom-formatted-data-from-hdfs.html">例 1 - 从HDFS读取自定义格式数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-sample-mapreduce-code.html">MapReduce代码示例</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-run-create-external-table.html">运行CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-write-custom-formatted-data-from-greenplum-database-to-hdfs.html">例 2 - 从Greenplum数据库写自定义格式的数据到HDFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-mapreduce-sample-code.html">MapReduce示例代码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gphdfs-jvm.html">有关gphdfs的JVM内存</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-emr-config.html">将Amazon EMR用于安装在AWS上的Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-avro-format.html">对Avro文件的支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-parquet-format.html">对Parquet文件的支持</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-creating-and-using-web-external-tables.html">创建并使用外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-command-based-web-external-tables.html">基于命令的外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-url-based-web-external-tables.html">基于URL的外部Web表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-using-a-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-creating-external-tables---examples.html">创建外部表 - 例子</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">例 1—单NIC机器上的单gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-multiple-gpfdist-instances.html">例 2—多gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-3-multiple-gpfdists-instances.html">例 3—多gpfdists实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-4-single-gpfdist-instance-with-error-logging.html">例 4—带错误日志的单gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">例 5—一个Hadoop分布式文件服务器上的TEXT格式</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-6-multiple-files-in-csv-format-with-header-rows.html">例 6—多个有头部行的CSV格式文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-7-readable-web-external-table-with-script.html">例 7—使用脚本的可读外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-8-writable-external-table-with-gpfdist.html">例 8—使用gpfdist的可写外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-9-writable-external-web-table-with-script.html">例 9—使用脚本的可写外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">例 10—使用XML转换的可读写外部表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-identifying-invalid-csv-files-in-error-table-data.html">在错误表数据中标识非法CSV文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-hadoop-file-server-gphdfs.html">例 2—Hadoop文件系统(gphdfs）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-transforming-xml-data.html">转换XML数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-determine-the-transformation-schema.html">确定转换方案</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-write-a-transform.html">编写转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-write-the-gpfdist-configuration.html">编写gpfdist配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-load-the-data.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-transfer-and-store-the-data.html">传输和存储数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-transforming-with-gpload.html">用GPLOAD转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-transforming-with-insert-into-select-from.html">用INSERT INTO SELECT FROM转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-configuration-file-format.html">配置文件格式</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-xml-transformation-examples.html">XML转换示例</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-dblp-database-publications-in-demo-directory.html">基于命令的外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-irs-mef-xml-files-in-demo-directory.html">例 2 - IRS MeF XML 文件（在demo目录中）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-3-witsml-files-in-demo-directory.html">例 3 - WITSML™ 文件 （在demo目录中）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA带来的改变</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-profiling.html">查询画像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partV.html">管理性能</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_intro.html">定义数据库性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/workload_mgmt.html">用资源队列进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcrondump.html">gpcrondump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpdbrestore.html">gpdbrestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpfilespace.html">gpfilespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpmfr.html">gpmfr</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gptransfer.html">gptransfer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/pgbouncer-ref.html">pgbouncer</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/orafce_ref.html">Oracle兼容性函数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/dblink.html">dblink函数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/ref_guide.html">Greenplum数据库参考指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/sql_commands/sql_ref.html">SQL命令参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/GPReferenceSQLSummaryLOP.html">SQL语法概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ABORT.html">ABORT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_AGGREGATE.html">ALTER AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_CONVERSION.html">ALTER CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_DATABASE.html">ALTER DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_DOMAIN.html">ALTER DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_EXTENSION.html">ALTER EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_EXTERNAL_TABLE.html">ALTER EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_FILESPACE.html">ALTER FILESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_FUNCTION.html">ALTER FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_GROUP.html">ALTER GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_INDEX.html">ALTER INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_LANGUAGE.html">ALTER LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR.html">ALTER OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR_CLASS.html">ALTER OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR_FAMILY.html">ALTER OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_PROTOCOL.html">ALTER PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_RESOURCE_QUEUE.html">ALTER RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_ROLE.html">ALTER ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_SCHEMA.html">ALTER SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_SEQUENCE.html">ALTER SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TABLE.html">ALTER TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TABLESPACE.html">ALTER TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TYPE.html">ALTER TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_USER.html">ALTER USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_VIEW.html">ALTER VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ANALYZE.html">ANALYZE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/BEGIN.html">BEGIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CHECKPOINT.html">CHECKPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CLOSE.html">CLOSE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CLUSTER.html">CLUSTER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COMMENT.html">COMMENT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COMMIT.html">COMMIT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COPY.html">COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_AGGREGATE.html">CREATE AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_CAST.html">CREATE CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_CONVERSION.html">CREATE CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_DATABASE.html">CREATE DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_DOMAIN.html">CREATE DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_EXTENSION.html">CREATE EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_FUNCTION.html">CREATE FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_GROUP.html">CREATE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_INDEX.html">CREATE INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_LANGUAGE.html">CREATE LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR.html">CREATE OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR_CLASS.html">CREATE OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR_FAMILY.html">CREATE OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_PROTOCOL.html">CREATE PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_RESOURCE_QUEUE.html">CREATE RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_ROLE.html">CREATE ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_RULE.html">CREATE RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_SCHEMA.html">CREATE SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_SEQUENCE.html">CREATE SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLE.html">CREATE TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLE_AS.html">CREATE TABLE AS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLESPACE.html">CREATE TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TYPE.html">CREATE TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_USER.html">CREATE USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_VIEW.html">CREATE VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DEALLOCATE.html">DEALLOCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DECLARE.html">DECLARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DELETE.html">DELETE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DISCARD.html">DISCARD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DO.html">DO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_AGGREGATE.html">DROP AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_CAST.html">DROP CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_CONVERSION.html">DROP CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_DATABASE.html">DROP DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_DOMAIN.html">DROP DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_EXTENSION.html">DROP EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_EXTERNAL_TABLE.html">DROP EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_FILESPACE.html">DROP FILESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_FUNCTION.html">DROP FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_GROUP.html">DROP GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_INDEX.html">DROP INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_LANGUAGE.html">DROP LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR.html">DROP OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR_CLASS.html">DROP OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR_FAMILY.html">DROP OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OWNED.html">DROP OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_PROTOCOL.html">DROP PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_RESOURCE_QUEUE.html">DROP RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_ROLE.html">DROP ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_RULE.html">DROP RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_SCHEMA.html">DROP SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_SEQUENCE.html">DROP SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TABLE.html">DROP TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TABLESPACE.html">DROP TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TYPE.html">DROP TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_USER.html">DROP USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_VIEW.html">DROP VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/END.html">END</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/EXECUTE.html">EXECUTE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/EXPLAIN.html">EXPLAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/FETCH.html">FETCH</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/GRANT.html">GRANT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/INSERT.html">INSERT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/LOAD.html">LOAD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/LOCK.html">LOCK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/MOVE.html">MOVE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/PREPARE.html">PREPARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REASSIGN_OWNED.html">REASSIGN OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REINDEX.html">REINDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/RELEASE_SAVEPOINT.html">RELEASE SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/RESET.html">RESET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REVOKE.html">REVOKE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ROLLBACK.html">ROLLBACK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ROLLBACK_TO_SAVEPOINT.html">ROLLBACK TO SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SAVEPOINT.html">SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SELECT.html">SELECT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SELECT_INTO.html">SELECT INTO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET.html">SET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_ROLE.html">SET ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_SESSION_AUTHORIZATION.html">SET SESSION AUTHORIZATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_TRANSACTION.html">SET TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SHOW.html">SHOW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/START_TRANSACTION.html">START TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/TRUNCATE.html">TRUNCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/UPDATE.html">UPDATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/VACUUM.html">VACUUM</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/VALUES.html">VALUES</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/SQL2008_support.html">SQL 2008可选特性符合</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/env_var_ref.html">Greenplum环境变量</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref.html#topic1">系统目录参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-tables.html#topic1">系统表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-views.html#topic1">系统视图</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-html.html#topic1">系统目录定义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_configuration_history.html">gp_configuration_history</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_db_interfaces.html">gp_db_interfaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distributed_log.html">gp_distributed_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distributed_xacts.html">gp_distributed_xacts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distribution_policy.html">gp_distribution_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gpexpand_expansion_progress.html">gpexpand.expansion_progress</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_expansion_status.html">gpexpand.status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_expansion_tables.html">gpexpand.status_detail</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_fastsequence.html">gp_fastsequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_fault_strategy.html">gp_fault_strategy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_global_sequence.html">gp_global_sequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_id.html">gp_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_interfaces.html">gp_interfaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_database_node.html">gp_persistent_database_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_filespace_node.html">gp_persistent_filespace_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_relation_node.html">gp_persistent_relation_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_tablespace_node.html">gp_persistent_tablespace_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_pgdatabase.html">gp_pgdatabase</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_relation_node.html">gp_relation_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_resqueue_status.html">gp_resqueue_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_segment_configuration.html">gp_segment_configuration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_transaction_log.html">gp_transaction_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_version_at_initdb.html">gp_version_at_initdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_aggregate.html">pg_aggregate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_am.html">pg_am</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_amop.html">pg_amop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_amproc.html">pg_amproc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_appendonly.html">pg_appendonly</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attrdef.html">pg_attrdef</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attribute.html">pg_attribute</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attribute_encoding.html">pg_attribute_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_auth_members.html">pg_auth_members</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_authid.html">pg_authid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_available_extension_versions.html">pg_available_extension_versions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_available_extensions.html">pg_available_extensions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_cast.html">pg_cast</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_class.html">pg_class</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_compression.html">pg_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_constraint.html">pg_constraint</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_conversion.html">pg_conversion</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_database.html">pg_database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_depend.html">pg_depend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_description.html">pg_description</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_enum.html">pg_enum</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_extension.html">pg_extension</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_exttable.html">pg_exttable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_filespace.html">pg_filespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_filespace_entry.html">pg_filespace_entry</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_index.html">pg_index</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_inherits.html">pg_inherits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_language.html">pg_language</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_largeobject.html">pg_largeobject</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_listener.html">pg_listener</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_locks.html">pg_locks</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_max_external_files.html">pg_max_external_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_namespace.html">pg_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_opclass.html">pg_opclass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_operator.html">pg_operator</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition.html">pg_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_columns.html">pg_partition_columns</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_encoding.html">pg_partition_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_rule.html">pg_partition_rule</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_templates.html">pg_partition_templates</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partitions.html">pg_partitions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_pltemplate.html">pg_pltemplate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_proc.html">pg_proc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resourcetype.html">pg_resourcetype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueue.html">pg_resqueue</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueue_attributes.html">pg_resqueue_attributes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueuecapability.html">pg_resqueuecapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_rewrite.html">pg_rewrite</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_roles.html">pg_roles</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_shdepend.html">pg_shdepend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_shdescription.html">pg_shdescription</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_last_operation.html">pg_stat_last_operation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_last_shoperation.html">pg_stat_last_shoperation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_operations.html">pg_stat_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_partition_operations.html">pg_stat_partition_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_replication.html">pg_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_statistic.html">pg_statistic</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stats_resqueue.html">pg_stat_resqueues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_tablespace.html">pg_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_trigger.html">pg_trigger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_type.html">pg_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_type_encoding.html">pg_type_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_user_mapping.html">pg_user_mapping</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_window.html">pg_window</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/gp_toolkit.html">gp_toolkit管理方案</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic2">检查需要日常维护的表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic5">检查锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic8">检查追加优化表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic16">查看Greenplum服务器日志文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic21">检查服务器端配置文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic24">检查失效的Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic26">检查资源队列的活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic32">检查查询磁盘溢出空间使用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic36">浏览用户和组（角色）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic38">检查数据库对象的大小和磁盘空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic49">检查不均匀的数据分布</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/gpperfmon/dbref.html">gpperfmon数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-database.html"> database_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-diskspace.html"> diskspace_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-filerep.html"> filerep_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-interface-stats.html"> interface_stats_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-log-alert.html"> log_alert_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-queries.html">queries_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-segment.html"> segment_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-socket-stats.html">socket_stats_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-system.html">system_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-dynamic-memory-info.html">dynamic_memory_info </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-memory-info.html"> memory_info </a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/data_types.html">Greenplum数据库数据类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/character_sets.html">字符集支持</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/config_params/guc_config.html">服务器配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_config.html#topic_vsn_22l_z4">参数类型和值</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_config.html#topic_cyz_p2l_z4">设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_category-list.html">参数分类</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/config_params/guc-list.html">配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#add_missing_from">add_missing_from</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#application_name">application_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#array_nulls">array_nulls</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#authentication_timeout">authentication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#backslash_quote">backslash_quote</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#block_size">block_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#bonjour_name">bonjour_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#check_function_bodies">check_function_bodies</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#client_encoding">client_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#client_min_messages">client_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_index_tuple_cost">cpu_index_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_operator_cost">cpu_operator_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_tuple_cost">cpu_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cursor_tuple_fraction">cursor_tuple_fraction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#custom_variable_classes">custom_variable_classes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#DateStyle">DateStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#db_user_namespace">db_user_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#deadlock_timeout">deadlock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_assertions">debug_assertions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_pretty_print">debug_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_parse">debug_print_parse</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_plan">debug_print_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_prelim_plan">debug_print_prelim_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_rewritten">debug_print_rewritten</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_slice_table">debug_print_slice_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_statistics_target">default_statistics_target</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_tablespace">default_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_transaction_isolation">default_transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_transaction_read_only">default_transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#dynamic_library_path">dynamic_library_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#effective_cache_size">effective_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_bitmapscan">enable_bitmapscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_groupagg">enable_groupagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_hashagg">enable_hashagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_hashjoin">enable_hashjoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_indexscan">enable_indexscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_mergejoin">enable_mergejoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_nestloop">enable_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_seqscan">enable_seqscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_sort">enable_sort</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_tidscan">enable_tidscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#escape_string_warning">escape_string_warning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#explain_pretty_print">explain_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#extra_float_digits">extra_float_digits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#filerep_mirrorvalidation_during_resync">filerep_mirrorvalidation_during_resync</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#from_collapse_limit">from_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_adjust_selectivity_for_outerjoins">gp_adjust_selectivity_for_outerjoins</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_analyze_relative_error">gp_analyze_relative_error</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_appendonly_compaction">gp_appendonly_compaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_appendonly_compaction_threshold">gp_appendonly_compaction_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_mode">gp_autostats_mode</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_mode_in_functions">gp_autostats_mode_in_functions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_on_change_threshold">gp_autostats_on_change_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_backup_directIO">gp_backup_directIO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_backup_directIO_read_chunk_mb">gp_backup_directIO_read_chunk_mb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_cached_segworkers_threshold">gp_cached_segworkers_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_command_count">gp_command_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_connection_send_timeout">gp_connection_send_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_connections_per_thread">gp_connections_per_thread</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_content">gp_content</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_create_table_random_default_distribution">gp_create_table_random_default_distribution</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_dbid">gp_dbid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_debug_linger">gp_debug_linger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_default_storage_options">gp_default_storage_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_dynamic_partition_pruning">gp_dynamic_partition_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_from">gp_email_from</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_password">gp_email_smtp_password</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_server">gp_email_smtp_server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_userid">gp_email_smtp_userid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_to">gp_email_to</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_adaptive_nestloop">gp_enable_adaptive_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct">gp_enable_agg_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct_pruning">gp_enable_agg_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_direct_dispatch">gp_enable_direct_dispatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_exchange_default_partition">gp_enable_exchange_default_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_fallback_plan">gp_enable_fallback_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_fast_sri">gp_enable_fast_sri</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_gpperfmon">gp_enable_gpperfmon</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_gather">gp_enable_groupext_distinct_gather</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_pruning">gp_enable_groupext_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_multiphase_agg">gp_enable_multiphase_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_predicate_propagation">gp_enable_predicate_propagation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_preunique">gp_enable_preunique</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_relsize_collection">gp_enable_relsize_collection</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sequential_window_plans">gp_enable_sequential_window_plans</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sort_distinct">gp_enable_sort_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sort_limit">gp_enable_sort_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_external_enable_exec">gp_external_enable_exec</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_external_max_segs">gp_external_max_segs</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_count">gp_filerep_tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_idle">gp_filerep_tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_interval">gp_filerep_tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_interval">gp_fts_probe_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_retries">gp_fts_probe_retries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_threadcount">gp_fts_probe_threadcount</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_timeout">gp_fts_probe_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_gpperfmon_send_interval">gp_gpperfmon_send_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gpperfmon_log_alert_level">gpperfmon_log_alert_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hadoop_home">gp_hadoop_home</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hadoop_target_version">gp_hadoop_target_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hashjoin_tuples_per_bucket">gp_hashjoin_tuples_per_bucket</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_idf_deduplicate">gp_idf_deduplicate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#topic_lvm_ttc_3p">gp_initial_bad_row_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_fc_method">gp_interconnect_fc_method</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_hash_multiplier">gp_interconnect_hash_multiplier</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_queue_depth">gp_interconnect_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_setup_timeout">gp_interconnect_setup_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_snd_queue_depth">gp_interconnect_snd_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_type">gp_interconnect_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_format">gp_log_format</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_fts">gp_log_fts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_gang">gp_log_gang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_csv_line_length">gp_max_csv_line_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_databases">gp_max_databases</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_filespaces">gp_max_filespaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_local_distributed_cache">gp_max_local_distributed_cache</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_packet_size">gp_max_packet_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_plan_size">gp_max_plan_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_tablespaces">gp_max_tablespaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_motion_cost_per_row">gp_motion_cost_per_row</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_num_contents_in_cluster">gp_num_contents_in_cluster</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_reject_percent_threshold">gp_reject_percent_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_reraise_signal">gp_reraise_signal</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_memory_policy">gp_resqueue_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority">gp_resqueue_priority</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority_cpucores_per_segment">gp_resqueue_priority_cpucores_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority_sweeper_interval">gp_resqueue_priority_sweeper_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_role">gp_role</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_safefswritesize">gp_safefswritesize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_segment_connect_timeout">gp_segment_connect_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_segments_for_planner">gp_segments_for_planner</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_server_version">gp_server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_server_version_num">gp_server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_session_id">gp_session_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_set_proc_affinity">gp_set_proc_affinity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_set_read_only">gp_set_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_community">gp_snmp_community</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_monitor_address">gp_snmp_monitor_address</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_use_inform_or_trap">gp_snmp_use_inform_or_trap</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_statistics_pullup_from_child_partition">gp_statistics_pullup_from_child_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_statistics_use_fkeys">gp_statistics_use_fkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_protect_limit">gp_vmem_protect_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_protect_segworker_cache_limit">gp_vmem_protect_segworker_cache_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_checksumming">gp_workfile_checksumming</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_compress_algorithm">gp_workfile_compress_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_files_per_query">gp_workfile_limit_files_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_query">gp_workfile_limit_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_segment">gp_workfile_limit_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gpperfmon_port">gpperfmon_port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#integer_datetimes">integer_datetimes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#IntervalStyle">IntervalStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#join_collapse_limit">join_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#keep_wal_segments">keep_wal_segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_caseins_users">krb_caseins_users</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_server_keyfile">krb_server_keyfile</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_srvname">krb_srvname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_collate">lc_collate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_ctype">lc_ctype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_messages">lc_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_monetary">lc_monetary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_numeric">lc_numeric</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_time">lc_time</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#listen_addresses">listen_addresses</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#local_preload_libraries">local_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_autostats">log_autostats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_connections">log_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_disconnections">log_disconnections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_dispatch_stats">log_dispatch_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_duration">log_duration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_error_verbosity">log_error_verbosity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_executor_stats">log_executor_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_hostname">log_hostname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_duration_statement">log_min_duration_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_error_statement">log_min_error_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_messages">log_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_parser_stats">log_parser_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_planner_stats">log_planner_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_rotation_age">log_rotation_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_rotation_size">log_rotation_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_statement">log_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_statement_stats">log_statement_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_timezone">log_timezone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_truncate_on_rotation">log_truncate_on_rotation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_appendonly_tables">max_appendonly_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_connections">max_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_files_per_process">max_files_per_process</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_fsm_pages">max_fsm_pages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_fsm_relations">max_fsm_relations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_function_args">max_function_args</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_identifier_length">max_identifier_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_index_keys">max_index_keys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_locks_per_transaction">max_locks_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_prepared_transactions">max_prepared_transactions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_resource_portals_per_transaction">max_resource_portals_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_resource_queues">max_resource_queues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_stack_depth">max_stack_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_statement_mem">max_statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer">optimizer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_array_expansion_threshold">optimizer_array_expansion_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_analyze_root_partition">optimizer_analyze_root_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_control">optimizer_control</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_cte_inlining_bound">optimizer_cte_inlining_bound</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_enable_master_only_queries">optimizer_enable_master_only_queries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_force_multistage_agg">optimizer_force_multistage_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_force_three_stage_scalar_dqa">optimizer_force_three_stage_scalar_dqa</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_join_order_threshold">optimizer_join_order_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_mdcache_size">optimizer_mdcache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_metadata_caching">optimizer_metadata_caching</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_minidump">optimizer_minidump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_nestloop_factor">optimizer_nestloop_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_parallel_union">optimizer_parallel_union</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_print_missing_stats">optimizer_print_missing_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_print_optimization_stats">optimizer_print_optimization_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_sort_factor">optimizer_sort_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#password_encryption">password_encryption</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#password_hash_algorithm">password_hash_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pgstat_track_activity_query_size">pgstat_track_activity_query_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_classpath">pljava_classpath</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_classpath_insecure">pljava_classpath_insecure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_statement_cache_size">pljava_statement_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_release_lingering_savepoints">pljava_release_lingering_savepoints</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_vmoptions">pljava_vmoptions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#port">port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#random_page_cost">random_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#readable_external_table_timeout">readable_external_table_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#repl_catchup_within_range">repl_catchup_within_range</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#replication_timeout">replication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#regex_flavor">regex_flavor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#resource_cleanup_gangs_on_wait">resource_cleanup_gangs_on_wait</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#resource_select_only">resource_select_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#runaway_detector_activation_percent">runaway_detector_activation_percent</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#search_path">search_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#seq_page_cost">seq_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_encoding">server_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_version">server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_version_num">server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#shared_buffers">shared_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#shared_preload_libraries">shared_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#ssl">ssl</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#ssl_ciphers">ssl_ciphers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#standard_conforming_strings">standard_conforming_strings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#statement_timeout">statement_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#stats_queue_level">stats_queue_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#superuser_reserved_connections">superuser_reserved_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_count">tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_idle">tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_interval">tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#temp_buffers">temp_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#TimeZone">TimeZone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#timezone_abbreviations">timezone_abbreviations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#track_activities">track_activities</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#track_counts">track_counts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transaction_isolation">transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transaction_read_only">transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transform_null_equals">transform_null_equals</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_directory">unix_socket_directory</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_group">unix_socket_group</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_permissions">unix_socket_permissions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#update_process_title">update_process_title</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_delay">vacuum_cost_delay</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_limit">vacuum_cost_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_dirty">vacuum_cost_page_dirty</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_hit">vacuum_cost_page_hit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_miss">vacuum_cost_page_miss</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_freeze_min_age">vacuum_freeze_min_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#validate_previous_free_tid">validate_previous_free_tid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vmem_process_interrupt">vmem_process_interrupt</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#wal_receiver_status_interval">wal_receiver_status_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#writable_external_table_bufsize">writable_external_table_bufsize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#xid_stop_limit">xid_stop_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#xid_warn_limit">xid_warn_limit</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/function-summary.html">内建函数摘要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/yaml_spec.html">Greenplum MapReduce规范</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_sql.html">Greenplum的PL&#x2F;pgSQL过程语言</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_r.html">Greenplum的PL&#x2F;R语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_python.html">Greenplum的PL&#x2F;Python语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_java.html">Greenplum的PL&#x2F;Java语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_perl.html">Greenplum的PL&#x2F;Perl语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/madlib.html">用于分析的Greenplum MADlib扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/fuzzystrmatch.html">Greenplum的模糊字符串匹配扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/feature_summary.html">Greenplum特性摘要</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    Greenplum MapReduce规范
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+
+  <h1 class="title topictitle1">Greenplum MapReduce规范</h1>
+
+  <div class="body">
+    <div class="p">该规范描述了文档格式以及用于定义Greenplum MapReduce任务的模式。<div class="note note">
+<span class="notetitle">注释：</span> 无论是MapReduce工具<samp class="ph codeph">gpmapreduce</samp>）还是其相关的YAML规范均已被弃用，它们将在下一个Greenplum数据库的主发布（6.x）中被移除。作为替代，请使用其他的查询格式，例如SQL或者过程语言扩展。
+    </div>
+</div>
+
+    <p class="p"><a class="xref" href="http://en.wikipedia.org/wiki/MapReduce" target="_blank">MapReduce</a>是谷歌开发的一个编程模型，用于在普通服务器阵列上处理和生成大量的数据集。Greenplum MapReduc允许熟悉MapReduce的程序员写map和reduce函数同时提交它们到Greenplum数据库并行引擎上用于处理。</p>
+
+    <p class="p">为了能让Greenplum处理MapReduce函数，需要在一个文档中定义函数，然后将该文档传递给Greenplum的MapReduce程序，<samp class="ph codeph">gpmapreduce</samp>，由Greenplum数据库并行引擎执行。Greenplum数据库系统会将输入的数据进行分布、在一系列的机器上执行程序、处理机器故障以及管理所需的内部机器间的通信。</p>
+
+    <p class="p">关于
+        <samp class="ph codeph">gpmapreduce</samp>的信息请见<em class="ph i">Greenplum数据库工具指南</em>。</p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>上级主题：</strong> <a class="link" href="../ref_guide/ref_guide.html" title="Greenplum数据库系统的参考信息，包括SQL命令、系统目录、环境变量、服务器配置参数、字符集支持、数据类型以及Greenplum数据库扩展。">Greenplum数据库参考指南</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic2">
+    <h2 class="title topictitle2">Greenplum MapReduce文档格式</h2>
+
+    <div class="body">
+      <p class="p">这部分解释一些Greenplum MapReduce文档格式的基本知识来帮助用户开始创建自己的Greenplum MapReduce文档。Greenplum使用<a class="xref" href="http://yaml.org/spec/1.1/" target="_blank">YAML 1.1</a>文档格式同时对于定义一个MapReduce作业的各个步骤有自己的模式实现。</p>
+
+      <p class="p">所有Greenplum MapReduce文件必须首先定义它们使用的YAML规范的版本。在此之后，三个破折号(<samp class="ph codeph">---</samp>)表示一个文档的是开始以及三个点号 (<samp class="ph codeph">...</samp>) 指明一个不需要启动新文档的文档的结束。只是行以一个英镑符号（<samp class="ph codeph">#</samp>）为前缀。也可以在相同的文件中声明多个Greenplum MapReduce文档：</p>
+
+      <pre class="pre codeblock">%YAML 1.1
+---
+# Begin Document 1
+# ...
+---
+# Begin Document 2
+# ...</pre>
+
+      <p class="p">在一个Greenplum MapReduce 文档中，有三种数据结构或者<em class="ph i">节点</em>的基本类型：<em class="ph i">标量</em>、<em class="ph i">序列</em> 以及<em class="ph i">映射</em>。</p>
+
+      <p class="p"><em class="ph i">标量</em>是一个用空格缩进的文本串。如果有一个跨越多行的标量的输入，一个前置竖线（<samp class="ph codeph">|</samp>）会表示一种<em class="ph i">literal</em>样式，在其中所有的换行都是有意义的。或者，用前置的前括号（<samp class="ph codeph">&gt;</samp>）为后续具有相同缩进级别的行把单个换行符折叠为空格。如果一个字符串包含具有保留意义的字符，字符串必须被引用或者特殊字符必须使用反斜线（<samp class="ph codeph">\</samp>）转义。</p>
+
+      <pre class="pre codeblock"># 逐字地读取每行
+somekey: <em class="ph i">|</em>   this value contains two lines
+   and each line is read literally
+# 将每个新的行看做一个空格
+anotherkey: <em class="ph i">&gt;
+</em>   this value contains two lines
+   but is treated as one continuous line
+# 该字符串引用包含了一个特殊字符
+ThirdKey: "This is a string: not a mapping"</pre>
+
+      <p class="p"><em class="ph i">序列</em>是一个列表，列表中每个项在它们自己的行中以一个破折号和一个空格（<samp class="ph codeph">- </samp>）来指示。或者，用户可以指定一个内联序列作为一个方括号内部逗号分隔的列表。一个序列提供了一个数据集合同时给定它们之间的顺序。当用户装载一个列表到Greenplum MapReduce程序中时，该顺序会被保留。</p>
+
+      <pre class="pre codeblock"># 列表序列
+- this
+- is
+- a list
+- with
+- five scalar values
+# 内联序列
+[this, is, a list, with, five scalar values]</pre>
+
+      <p class="p"><em class="ph i">映射</em>被用来打包数据的值和被称为<em class="ph i">keys</em>的标识符。映射为每个<samp class="ph codeph">键: 值</samp>对使用一个冒号和空格（<samp class="ph codeph">: </samp>），或者也可以被指定内联为一个花括号内由逗号分隔的列表。<em class="ph i">键</em>用来作为从映射中获取数据的索引。 </p>
+
+      <pre class="pre codeblock"># 多个项目的一个映射
+title: War and Peace
+author: Leo Tolstoy
+date: 1865
+# 用内联表示该映射
+{title: War and Peace, author: Leo Tolstoy, date: 1865}</pre>
+
+      <p class="p">键被用来连接每个节点和元数据信息以及指定期望的节点类型（<em class="ph i">scalar</em>、<em class="ph i">sequence</em>或者<em class="ph i">mapping</em>）。见<a class="xref" href="#topic3">Greenplum MapReduce文档模式</a>获取关于Greenplum MapReduce程序期待的键。</p>
+
+      <p class="p">Greenplum MapReduce 程序安好走啊顺序处理一个文档的节点同时使用缩进（空格）来决定文档的层级和节点见得关系。空格的使用非常重要。不应该简单的使用空格作为格式化的目的，制表符不应该被使用。 </p>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic3">
+    <h2 class="title topictitle2">Greenplum MapReduce文档模式</h2>
+
+    <div class="body">
+      <p class="p">Greenplum MapReduce使用YAML文档架构同时实现了自己的YAML模式。一个Greenplum MapReduce文档的基本结构为：</p>
+
+      <pre class="pre codeblock">%YAML 1.1
+---
+<a class="xref" href="#topic3__VERSION">VERSION</a>: 1.0.0.2
+<a class="xref" href="#topic3__DATABASE">DATABASE</a>: <em class="ph i">dbname</em>
+<a class="xref" href="#topic3__USER">USER</a>: <em class="ph i">db_username</em>
+<a class="xref" href="#topic3__HOST">HOST</a>: <em class="ph i">master_hostname</em>
+<a class="xref" href="#topic3__PORT">PORT</a>: <em class="ph i">master_port</em></pre>
+
+      <pre class="pre codeblock"><a class="xref" href="#topic3__DEFINE">DEFINE</a>: 
+  - <a class="xref" href="#topic3__INPUT">INPUT</a>:
+     <a class="xref" href="#topic3__NAME">NAME</a>: <em class="ph i">input_name</em>
+     <a class="xref" href="#topic3__FILE">FILE</a>: 
+      - <em class="ph i">hostname</em>:<em class="ph i">/path/to/file</em>
+     <a class="xref" href="#topic3__GPFDIST">GPFDIST</a>:
+       - <em class="ph i">hostname</em>:port<em class="ph i">/file_pattern</em>
+     <a class="xref" href="#topic3__TABLE">TABLE</a>: <em class="ph i">table_name</em>
+     <a class="xref" href="#topic3__QUERY">QUERY</a>: <em class="ph i">SELECT_statement</em>
+     <a class="xref" href="#topic3__EXEC">EXEC</a>: <em class="ph i">command_string</em>
+     <a class="xref" href="#topic3__COLUMNS">COLUMNS</a>:
+       - <em class="ph i">field_name data_type</em>
+     <a class="xref" href="#topic3__FORMAT">FORMAT</a>: TEXT | CSV
+     <a class="xref" href="#topic3__DELIMITER">DELIMITER</a>: <em class="ph i">delimiter_character</em>
+     <a class="xref" href="#topic3__ESCAPE">ESCAPE</a>: <em class="ph i">escape_character</em>
+     <a class="xref" href="#topic3__NULL">NULL</a>: <em class="ph i">null_string</em>
+     <a class="xref" href="#topic3__QUOTE">QUOTE</a>: <em class="ph i">csv_quote_character</em>
+     <a class="xref" href="#topic3__ERROR_LIMIT">ERROR_LIMIT</a>: <em class="ph i">integer</em>
+     <a class="xref" href="#topic3__ENCODING">ENCODING</a>: <em class="ph i">database_encoding</em></pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__OUTPUT">OUTPUT</a>:
+     <a class="xref" href="#topic3__OUTPUTNAME">NAME</a>: <em class="ph i">output_name</em>
+     <a class="xref" href="#topic3__OUTPUTFILE">FILE</a>: <em class="ph i">file_path_on_client</em>
+     <a class="xref" href="#topic3__OUTPUTTABLE">TABLE</a>: <em class="ph i">table_name</em>
+     <a class="xref" href="#topic3__KEYS">KEYS</a>: 
+<em class="ph i">       - column_name</em>
+     <a class="xref" href="#topic3__MODE">MODE</a>: REPLACE | APPEND</pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__MAP">MAP</a>:
+     <a class="xref" href="#topic3__NAME">NAME</a>: <em class="ph i">function_name</em>
+     <a class="xref" href="#topic3__FUNCTION">FUNCTION</a>: <em class="ph i">function_definition</em>
+     <a class="xref" href="#topic3__LANGUAGE">LANGUAGE</a>: perl | python | c
+     <a class="xref" href="#topic3__LIBRARY">LIBRARY</a>: <em class="ph i">/path/filename.so</em>
+     <a class="xref" href="#topic3__PARAMETERS">PARAMETERS</a>: 
+<em class="ph i">       - name</em><em class="ph i">type</em>
+     <a class="xref" href="#topic3__RETURNS">RETURNS</a>: 
+<em class="ph i">       - name</em><em class="ph i">type</em>
+     <a class="xref" href="#topic3__OPTIMIZE">OPTIMIZE</a>: STRICT IMMUTABLE
+     <a class="xref" href="#topic3__MODE">MODE</a>: SINGLE | MULTI</pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__TCF">TRANSITION | CONSOLIDATE | FINALIZE</a>:
+     <a class="xref" href="#topic3__TCFNAME">NAME</a>: <em class="ph i">function_name</em>
+     <a class="xref" href="#topic3__FUNCTION">FUNCTION</a>: <em class="ph i">function_definition</em>
+     <a class="xref" href="#topic3__LANGUAGE">LANGUAGE</a>: perl | python | c
+     <a class="xref" href="#topic3__LIBRARY">LIBRARY</a>: <em class="ph i">/path/filename.so</em>
+     <a class="xref" href="#topic3__PARAMETERS">PARAMETERS</a>: 
+<em class="ph i">       - name</em><em class="ph i">type</em>
+     <a class="xref" href="#topic3__RETURNS">RETURNS</a>: 
+<em class="ph i">       - name</em><em class="ph i">type</em>
+     <a class="xref" href="#topic3__OPTIMIZE">OPTIMIZE</a>: STRICT IMMUTABLE
+     <a class="xref" href="#topic3__TCFMODE">MODE</a>: SINGLE | MULTI</pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__REDUCE">REDUCE</a>:
+     <a class="xref" href="#topic3__REDUCENAME">NAME</a>: <em class="ph i">reduce_job_name</em>
+     <a class="xref" href="#topic3__TRANSITION">TRANSITION</a>: <em class="ph i">transition_function_name</em>
+     <a class="xref" href="#topic3__CONSOLIDATE">CONSOLIDATE</a>: <em class="ph i">consolidate_function_name</em>
+     <a class="xref" href="#topic3__FINALIZE">FINALIZE</a>: <em class="ph i">finalize_function_name</em>
+     <a class="xref" href="#topic3__INITIALIZE">INITIALIZE</a>: <em class="ph i">value</em>
+     <a class="xref" href="#topic3__REDUCEKEYS">KEYS</a>:
+<em class="ph i">       - key_name</em></pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__TASK">TASK</a>:
+     <a class="xref" href="#topic3__TASKNAME">NAME</a>: <em class="ph i">task_name</em>
+     <a class="xref" href="#topic3__SOURCE">SOURCE</a>: <em class="ph i">input_name</em>
+     <a class="xref" href="#topic3__TASKMAP">MAP</a>: <em class="ph i">map_function_name</em>
+     <a class="xref" href="#topic3__REDUCE">REDUCE</a>: <em class="ph i">reduce_function_name</em>
+<a class="xref" href="#topic3__EXECUTE">EXECUTE</a></pre>
+
+      <pre class="pre codeblock">  - <a class="xref" href="#topic3__RUN">RUN</a>:
+     <a class="xref" href="#topic3__EXECUTESOURCE">SOURCE</a>: <em class="ph i">input_or_task_name</em>
+     <a class="xref" href="#topic3__TARGET">TARGET</a>: <em class="ph i">output_name</em>
+     <a class="xref" href="#topic3__EXECUTEMAP">MAP</a>: <em class="ph i">map_function_name</em>
+     <a class="xref" href="#topic3__EXECUTEREDUCE">REDUCE</a>: <em class="ph i">reduce_function_name</em>...</pre>
+
+      <dl class="dl parml">
+        
+          <dt class="dt pt dlterm" id="topic3__VERSION">VERSION</dt>
+
+          <dd class="dd pd">
+            <p class="p">要求。Greenplum MapReduce YAML规范的版本。当前版本为1.0.0.1.</p>
+
+          </dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__DATABASE">DATABASE</dt>
+
+          <dd class="dd pd">可选。指定要连接到Greenplum中哪个数据库。如果没有指定，默认连接到默认的数据库或者<samp class="ph codeph">$PGDATABASE</samp>（如果该值被设置了）。</dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__USER">USER</dt>
+
+          <dd class="dd pd">可选。指定使用哪个数据库角色来连接。如果没有指定，默认使用当前用户，或者<samp class="ph codeph">$PGUSER</samp>（如果该值被设置）。用户必须为Greenplum的超级用户，如果要运行的函数是由不可行的Python或者Perl写的。普通数据库用户能运行由可信Perl写的函数。当用户运行的MapReduce作业包含了<a class="xref" href="#topic3__FILE">FILE</a>、<a class="xref" href="#topic3__GPFDIST">GPFDIST</a>以及<a class="xref" href="#topic3__EXEC">EXEC</a>输入类型，那么用户也必须是数据库的超级用户。 </dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__HOST">HOST</dt>
+
+          <dd class="dd pd">可选。指定Greenplum的Master主机的名称。如果没有指定，默认为localhost 或者<samp class="ph codeph">$PGHOST</samp>（如果该值被设置了）。</dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__PORT">PORT</dt>
+
+          <dd class="dd pd">可选。指定Greenplum的Master节点的端口。如果没有指定，默认端口为5432或者<samp class="ph codeph">$PGPORT</samp>（如果该值被设置）。</dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__DEFINE">DEFINE</dt>
+
+          <dd class="dd pd">要求。为该MapReduce文档的定义的一个序列。<samp class="ph codeph">DEFINE</samp>部分必须至少有一个<samp class="ph codeph">INPUT</samp>定义。<dl class="dl parml">
+              
+                <dt class="dt pt dlterm" id="topic3__INPUT">INPUT</dt>
+
+                <dd class="dd pd">要求。定义输入数据。每个MapReduce文档必须至少有一个输入数据定义。在一个文档中允许有多个输入定义，但是每个输入定义只能指定一个访问类型：一个文件、一个<samp class="ph codeph">gpfdist</samp>文件分布程序、一个数据库中的表、一个SQL命令或者一个操作系统的命令。见 <em class="ph i">Greenplum数据库工具指南</em>获取关于 <samp class="ph codeph">gpfdist</samp>的信息。<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__NAME">NAME</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">一个该输入的名称。一个名称对比该MapReduce作业中的其它对象（例如map函数、任务、reduce函数以及输出名称）的名称是唯一的。另外，名称也不能同数据库已经存在的对象（例如，表、函数或者视图）名称冲突。</p>
+
+                      </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__FILE">FILE</dt>
+
+                      <dd class="dd pd">一个或者多个输入文件的序列，以格式：
+                          <samp class="ph codeph">seghostname:/path/to/filename</samp>。用户必须是一个Greenplum数据库的超级用户来运行带有<samp class="ph codeph">FILE</samp>输入的MapReduce作业。文件必须驻留在Greenplum的segment主机上。</dd>
+
+                    
+                  </dl>
+<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__GPFDIST">GPFDIST</dt>
+
+                      <dd class="dd pd">一个或者多个运行的<samp class="ph codeph">gpfdist</samp>文件分发程序的序列，以格式：
+                          <samp class="ph codeph">hostname[:port]/file_pattern</samp>。用户必须为Greenplum数据库超级用户运行以<samp class="ph codeph">GPFDIST</samp>作为输入的MapReduce作业，除非服务配置参数<a class="xref" href="config_params/guc_config.html#topic1">服务器配置参数</a>被设置为<samp class="ph codeph">on</samp>。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TABLE">TABLE</dt>
+
+                      <dd class="dd pd">数据库中存在的表的名称</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__QUERY">QUERY</dt>
+
+                      <dd class="dd pd">一个运行在数据库内的SQL命令<samp class="ph codeph">SELECT</samp>。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__EXEC">EXEC</dt>
+
+                      <dd class="dd pd">一个运行在Greenplum的Segment主机上的操作系统命令。该命令默认由系统中所有的Segment实例运行。例如，如果在每个Segment主机上有四个Segment实例，那么该命令会在每个主机上执行四次。必须作为Greenplum数据库的超级用户才能执行带有<samp class="ph codeph">EXEC</samp>输入的MapReduce作业，同时服务配置参数<a class="xref" href="config_params/guc_config.html#topic1">服务器配置参数</a>要设置为<samp class="ph codeph">on</samp>。</dd>
+                      <dt class="dt pt dlterm" id="topic3__COLUMNS">COLUMNS</dt>
+
+                      <dd class="dd pd">可选。列被指定为： <samp class="ph codeph">column_name
+                      </samp><samp class="ph codeph">[</samp><samp class="ph codeph">data_type</samp><samp class="ph codeph">]</samp>。如果没有指定，默认为<samp class="ph codeph">value text</samp>。 The <a class="xref" href="#topic3__DELIMITER">DELIMITER</a>字符用来分隔两个数据域（列）。一个行由一个（a line feed character）行的字符（<samp class="ph codeph">0x0a</samp>）决定。 </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__FORMAT">FORMAT</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">可选。指定数据的格式 - 或者为分隔的文本（<samp class="ph codeph">TEXT</samp>）或者逗号分隔的值（<samp class="ph codeph">CSV</samp>的格式。如果数据格式没有被指定，默认为<samp class="ph codeph">TEXT</samp>。</p>
+
+                      </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__DELIMITER">DELIMITER</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">对于<a class="xref" href="#topic3__FILE">FILE</a>、<a class="xref" href="#topic3__GPFDIST">GPFDIST</a>以及<a class="xref" href="#topic3__EXEC">EXEC</a>输入是可选的。指定单个字符来分隔数据的值。默认为一个tab字符在<samp class="ph codeph">TEXT</samp>中。分隔字符必须出现在两个数据值的域之间。不用讲分隔符放在一个行的开始或者结束。</p>
+
+                      </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__ESCAPE">ESCAPE</dt>
+
+                      <dd class="dd pd">对于<a class="xref" href="#topic3__FILE">FILE</a>、 <a class="xref" href="#topic3__GPFDIST">GPFDIST</a>以及<a class="xref" href="#topic3__EXEC">EXEC</a>输入是可选的。指定被用来作为C的转义序列（例如，<samp class="ph codeph">\n</samp>、<samp class="ph codeph">\t</samp>、<samp class="ph codeph">\100</samp>等）的单个字符同时对于转义字符可能被当作行或者列的分隔符。 确保用户选择的转义字符没有在用户实际的列的数据库中使用。对于文本格式文件的默认的转义字符为一个\（反斜线符号），对于csv格式的文件的默认转义字符为一个<samp class="ph codeph">"</samp>（双引号），然后也有可能指定其它的字符来代表转义。也可能通过指定<samp class="ph codeph">'OFF'</samp>为转义值来关闭转义。这对于像文本格式的内嵌有反斜线（此处反斜线的目的不是转义）的网络日志数据是非常有用的。
+                       </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__NULL">NULL</dt>
+
+                      <dd class="dd pd">对于<a class="xref" href="#topic3__FILE">FILE</a>、<a class="xref" href="#topic3__GPFDIST">GPFDIST</a>以及<a class="xref" href="#topic3__EXEC">EXEC</a>输入是可选的。指定代用空值的字符串。在<samp class="ph codeph">TEXT</samp>格式下，默认为<samp class="ph codeph">\N</samp>在<samp class="ph codeph">CSV</samp>格式下，默认为没有引用（quotations）的空值。 甚至在<samp class="ph codeph">TEXT</samp>模式下，用户可能更喜欢一个空字符串，用户不想从空字符串中区别空值。任何能够匹配该字符串输入数据项将被视为空值。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__QUOTE">QUOTE</dt>
+
+                      <dd class="dd pd">对于<a class="xref" href="#topic3__FILE">FILE</a>、<a class="xref" href="#topic3__GPFDIST">GPFDIST</a>和<a class="xref" href="#topic3__EXEC">EXEC</a>输入是可选的。为<samp class="ph codeph">CSV</samp>格式文件指定引用字符的。默认是双引号（<samp class="ph codeph">"</samp>）。在<samp class="ph codeph">CSV</samp>格式的文件中，如果它们包含有逗号或者内嵌新的行，则数据值域必须包含在双引号中。包含双引号字符的字段必须用双引号保卫，并且内嵌的双引号必须有一对连续的双引号表示。为了数据行的正确解析，总是打开和关闭引号是非常重要的。 </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__ERROR_LIMIT">ERROR_LIMIT</dt>
+
+                      <dd class="dd pd">在Greenplum的任何Segment实例进行输入处理期间，如果输入行有格式错误，没有达到提供的错误限制计数前，错误都会被丢弃。如果错误限制没有达到，所有好的行将会被处理同时任何错误的行会被丢弃。</dd>
+
+                    
+                  </dl>
+<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__ENCODING">ENCODING</dt>
+
+                      <dd class="dd pd">用于数据的字符集编码。指定一个字符串常量（例如，<samp class="ph codeph">'SQL_ASCII'</samp>）、一个整型编码数字、或者<samp class="ph codeph">DEFAULT</samp>来用于默认的客户端编码。见<a class="xref" href="character_sets.html#topic1">字符集支持</a>获取更多信息。</dd>
+
+                    
+                  </dl>
+</dd>
+
+              
+              
+                <dt class="dt pt dlterm" id="topic3__OUTPUT">OUTPUT</dt>
+
+                <dd class="dd pd">可选。定义该MapReduce作业在哪里输出格式数据。如果输出没有定义，默认为<samp class="ph codeph">STDOUT</samp>（客户端的标准输出）。用户可以发送输出到一个客户端主机上的文件中或者数据库当前存在的一张表中。<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__OUTPUTNAME">NAME</dt>
+
+                      <dd class="dd pd">该输出的一个名称。默认名为<samp class="ph codeph">STDOUT</samp>。 一个名称对比该MapReduce作业中的其它对象（例如map函数、任务、reduce函数以及输出名称）的名称是唯一的。另外，名称也不能同数据库已经存在的对象（例如，表、函数或者视图）名称冲突。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__OUTPUTFILE">FILE</dt>
+
+                      <dd class="dd pd">指定在MapReduce客户端机器上一个文件的位置，用于输出数据，格式为：<samp class="ph codeph">/path/to/filename</samp>。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__OUTPUTTABLE">TABLE</dt>
+
+                      <dd class="dd pd">在数据库中指定一个表的名称用于输出数据。如果该表在执行MapReduce作业前不存在，那么将通过指定 <a class="xref" href="#topic3__KEYS">KEYS</a>的分布策略来创建。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__KEYS">KEYS</dt>
+
+                      <dd class="dd pd">对于 <a class="xref" href="#topic3__OUTPUTTABLE">TABLE</a>输出是可选的。指定列用于Greenplum数据库的分布键。如果<a class="xref" href="#topic3__EXECUTE">EXECUTE</a>任务包含了一个<a class="xref" href="#topic3__REDUCE">REDUCE</a>定义，那么该键默认将作为表的分布键。否则表的第一列将用作分布键。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__MODE">MODE</dt>
+
+                      <dd class="dd pd">对于 <a class="xref" href="#topic3__OUTPUTTABLE">TABLE</a>输出是可选的。如果没有指定，如果表不存在默认行为为创建一个表，如果存在则发出一个错误。声明<samp class="ph codeph">APPEND</samp>添加数据到一张已经存在的表中（被提供的表模式匹配输出格式）而不需要移除任何已经存在的数据。声明 <samp class="ph codeph">REPLACE</samp>，如果表存在将删除表然后重新创建该表。 <samp class="ph codeph">APPEND</samp>和
+                          <samp class="ph codeph">REPLACE</samp>都会在表不存在的时候创建新表。</dd>
+
+                    
+                  </dl>
+</dd>
+
+              
+              
+                <dt class="dt pt dlterm" id="topic3__MAP">MAP</dt>
+
+                <dd class="dd pd">要求。每个<samp class="ph codeph">MAP</samp>函数都接受在（<samp class="ph codeph">key</samp>，<samp class="ph codeph">value</samp>）对中构造数据，处理每对同时生成零个或者更多输出的（<samp class="ph codeph">key</samp>，<samp class="ph codeph">value</samp>）对。Greenplum MapReduce 架构然后收集从所有输出列表中收集具有相同键的对并将他们归类到一起。然后将该输出传递给<a class="xref" href="#topic3__TASKREDUCE">REDUCE</a>任务，该任务由<a class="xref" href="#topic3__TCF">TRANSITION | CONSOLIDATE |
+                    FINALIZE</a>函数组成。有一个预定义的命名为<samp class="ph codeph">IDENTITY的</samp><samp class="ph codeph">MAP</samp>函数，该函数返回没有变化的（<samp class="ph codeph">key</samp>，<samp class="ph codeph">value</samp>）对。尽管（<samp class="ph codeph">key</samp>，<samp class="ph codeph">value</samp>）是默认的参数，用户也能根据需要指定原型。
+                 </dd>
+
+              
+              
+                <dt class="dt pt dlterm" id="topic3__TCF">TRANSITION | CONSOLIDATE | FINALIZE</dt>
+
+                <dd class="dd pd">
+<samp class="ph codeph">TRANSITION</samp>、<samp class="ph codeph">CONSOLIDATE</samp>以及
+                    <samp class="ph codeph">FINALIZE</samp>是所有组成<a class="xref" href="#topic3__REDUCE">REDUCE</a>的片段（pieces）。一个<samp class="ph codeph">TRANSITION</samp>函数是必须的。 <samp class="ph codeph">CONSOLIDATE</samp> 以及 <samp class="ph codeph">FINALIZE</samp>
+                  函数是可选的。默认情况下，所有都将<samp class="ph codeph">state</samp>作为它们的输入<a class="xref" href="#topic3__PARAMETERS">PARAMETERS</a>的第一个，但是其它原型也可以这样定义。 </dd>
+
+                <dd class="dd pd">
+                  <p class="p">一个<samp class="ph codeph">TRANSITION</samp> 函数遍历给定键的每个值同时在一个<samp class="ph codeph">state</samp>变量中累积值。当一个过渡（transition）函数在一个键的第一个值被调用时，<samp class="ph codeph">state</samp> 的值被设置为通过一个a <a class="xref" href="#topic3__REDUCE">REDUCE</a>作业的<a class="xref" href="#topic3__INITIALIZE">INITALIZE</a>指定的值（或者使用该数据类型默认的state值）。一个过渡函数用两个参数作为输入，当前的键归约的state，之后产生一个新<samp class="ph codeph">state</samp>的下一个值。</p>
+
+                </dd>
+
+                <dd class="dd pd">如果一个<samp class="ph codeph">CONSOLIDATE</samp>函数被指定，在通过Greenplum的Interconnect为最终聚集（两阶段聚集）重新分布键之前，<samp class="ph codeph">TRANSITION</samp>处理会在Segment级别被执行。只有给定键的结果<samp class="ph codeph">state</samp>被重分布时，才会导致较低的Interconnect流量以及较高的并行性。<samp class="ph codeph">CONSOLIDATE</samp>会像<samp class="ph codeph">TRANSITION</samp>一样被处理，不过它不会用<samp class="ph codeph">(state + value)
+                      =&gt; state</samp>，而是采用<samp class="ph codeph">(state + state) =&gt; state</samp>。</dd>
+
+<dd class="dd pd">如果一个<samp class="ph codeph">FINALIZE</samp>函数被指定，它接受由<samp class="ph codeph">CONSOLIDATE</samp>（如何呈现的话）或者
+    <samp class="ph codeph">TRANSITION</samp>函数产生的最终<samp class="ph codeph">state</samp>同时执行任何在发出最终结果前的所有处理。 <samp class="ph codeph">TRANSITION</samp>和<samp class="ph codeph">CONSOLIDATE
+                  </samp>函数不能返回值的集合。如果用户需要一个<samp class="ph codeph">REDUCE</samp>作业返回一个集合，那么一个<samp class="ph codeph">FINALIZE</samp>是有必要的，它能将最后的state转换为一个输出值的集合。<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__TCFNAME">NAME</dt>
+
+                      <dd class="dd pd">要求。一个函数的名称。一个名称对比该MapReduce作业中的其它对象（例如map函数、任务、reduce函数以及输出名称）的名称是唯一的。用户也能指定一个Greenplum数据库内建函数的名称。如果使用内建函数，不需提供<a class="xref" href="#topic3__LANGUAGE">LANGUAGE</a>或者一个<a class="xref" href="#topic3__FUNCTION">FUNCTION</a>体。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__FUNCTION">FUNCTION</dt>
+
+                      <dd class="dd pd">可选。通过使用指定的<a class="xref" href="#topic3__LANGUAGE">LANGUAGE</a>指定函数的完整的主体。如果 <samp class="ph codeph">FUNCTION</samp>没有指定，那么一个对应<a class="xref" href="#topic3__TCFNAME">NAME</a>的内建数据库函数将会被使用。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__LANGUAGE">LANGUAGE</dt>
+
+                      <dd class="dd pd">当 <a class="xref" href="#topic3__FUNCTION">FUNCTION</a>使用时，是要求的。 指定用来解释函数的实现语言。该版本的语言支持有<samp class="ph codeph">perl</samp>、
+                          <samp class="ph codeph">python</samp>以及<samp class="ph codeph">C</samp>。如果调用一个内建数据库函数，<samp class="ph codeph">LANGUAGE</samp>不应该被指定。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__LIBRARY">LIBRARY</dt>
+
+                      <dd class="dd pd">当<a class="xref" href="#topic3__LANGUAGE">LANGUAGE</a>是C（对于其它语言是不允许的）时，是要求的。为了使用该属性， <a class="xref" href="#topic3__VERSION">VERSION</a>必须为1.0.0.2。指定的库文件一定在执行MapReduce作业前安装好，同时在所有的Greenplum主机（master和segment）上都位于相同的文件系统位置。
+                    </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__PARAMETERS">PARAMETERS</dt>
+
+                      <dd class="dd pd">可选。函数输入参数。默认类型为<samp class="ph codeph">text</samp>。<p class="p"><samp class="ph codeph">MAP</samp> 默认 - <samp class="ph codeph">key
+                            text</samp>， <samp class="ph codeph">value
+                            text</samp></p>
+<p class="p"><samp class="ph codeph">TRANSITION</samp> 默认 - <samp class="ph codeph">state
+                            text</samp>， <samp class="ph codeph">value
+                            text</samp></p>
+<p class="p"><samp class="ph codeph">CONSOLIDATE</samp> 默认 -
+                            <samp class="ph codeph">state1 text</samp>， <samp class="ph codeph">state2 text</samp> （必须为恰好相同数据类型的两个输入参数）</p>
+<p class="p"><samp class="ph codeph">FINALIZE</samp> 默认 - <samp class="ph codeph">state
+                            text</samp> （只有一个参数）</p>
+</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__RETURNS">RETURNS</dt>
+
+                      <dd class="dd pd">可选。默认的返回类型为<samp class="ph codeph">text</samp>。<p class="p"><samp class="ph codeph">MAP</samp> 默认 - <samp class="ph codeph">key
+                            text</samp>， <samp class="ph codeph">value
+                            text</samp></p>
+<p class="p"><samp class="ph codeph">TRANSITION</samp> 默认 - <samp class="ph codeph">state
+                            text</samp> （只有一个返回值）</p>
+<p class="p"><samp class="ph codeph">CONSOLIDATE</samp> 默认 - <samp class="ph codeph">state
+                            text</samp> （只有一个返回值）</p>
+<p class="p"><samp class="ph codeph">FINALIZE</samp>
+                          默认 - <samp class="ph codeph">value text</samp></p>
+</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__OPTIMIZE">OPTIMIZE</dt>
+
+                      <dd class="dd pd">函数可选的优化参数： <p class="p"><samp class="ph codeph">STRICT</samp> - 函数不受<samp class="ph codeph">NULL</samp>值的影响。 </p>
+<p class="p"><samp class="ph codeph">IMMUTABLE</samp> - 对于一个给定的输入函数总是返回相同的值。</p>
+</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TCFMODE">MODE</dt>
+
+                      <dd class="dd pd">可选。指定函数返回的行的行数。
+                            <p class="p"><samp class="ph codeph">MULTI</samp> - 内个输入记录返回0或者更多的行。函数的返回值一定是一个返回的行数组，或者函数在Python中使用<samp class="ph codeph">yield</samp>写成迭代器或者在Perl中用<samp class="ph codeph">return_next</samp>。<samp class="ph codeph">MULTI</samp>是<samp class="ph codeph">MAP</samp>和<samp class="ph codeph">FINALIZE</samp>函数的默认模式。
+                          </p>
+<p class="p"><samp class="ph codeph">SINGLE</samp> - 每个输入记录恰好只返回一行。 <samp class="ph codeph">SINGLE</samp>是为一个支持 <samp class="ph codeph">TRANSITION</samp>和<samp class="ph codeph">CONSOLIDATE</samp>函数的模式。当使用<samp class="ph codeph">MAP</samp>和<samp class="ph codeph">FINALIZE</samp>函数时，<samp class="ph codeph">SINGLE</samp> 模式能够适度的性能提升。</p>
+</dd>
+
+                    
+                  </dl>
+</dd>
+
+              
+              
+                <dt class="dt pt dlterm" id="topic3__REDUCE">REDUCE</dt>
+
+<dd class="dd pd">要求。一个<samp class="ph codeph">REDUCE</samp>定义命名<a class="xref" href="#topic3__TCF">TRANSITION | CONSOLIDATE | FINALIZE</a>函数组成（<samp class="ph codeph">key</samp>，
+    <samp class="ph codeph">value</samp>）归约到最终的结果集。有几个用户能执行的预先定义<samp class="ph codeph">REDUCE</samp>作业，它们所有操作在一个名为<samp class="ph codeph">value</samp>的列上：
+                  <p class="p"><samp class="ph codeph">IDENTITY</samp> - 返回没有改变的(key,
+                    value) 对</p>
+<p class="p"><samp class="ph codeph">SUM</samp> - 计算数值数据的和</p>
+<p class="p"><samp class="ph codeph">AVG</samp> - 计算数值数据的平均值</p>
+<p class="p"><samp class="ph codeph">COUNT</samp> - 计算输入数据的计数</p>
+<p class="p"><samp class="ph codeph">MIN</samp> - 计算数值数据的最小数值</p>
+<p class="p"><samp class="ph codeph">MAX</samp> - 计算数值数据的最大值</p>
+<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__REDUCENAME">NAME</dt>
+
+                      <dd class="dd pd">要求。该<samp class="ph codeph">REDUCE</samp>作业的名称。一个名称对比该MapReduce作业中的其它对象（例如map函数、任务、reduce函数以及输出名称）的名称是唯一的。另外，名称也不能同数据库已经存在的对象（例如，表、函数或者视图）名称冲突。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TRANSITION">TRANSITION</dt>
+
+                      <dd class="dd pd">要求。 <samp class="ph codeph">TRANSITION</samp> 函数的名称。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__CONSOLIDATE">CONSOLIDATE</dt>
+
+                      <dd class="dd pd">可选。<samp class="ph codeph">CONSOLIDATE</samp> 函数的名称。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__FINALIZE">FINALIZE</dt>
+
+                      <dd class="dd pd">可选。 <samp class="ph codeph">FINALIZE</samp> 函数的名称。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__INITIALIZE">INITIALIZE</dt>
+
+                      <dd class="dd pd">对于<samp class="ph codeph">text</samp> 和<samp class="ph codeph">float</samp>数据类型是可选的。对于其它的数据类型是要求的。text的默认值为<samp class="ph codeph">''</samp>。float的默认值为<samp class="ph codeph">0.0</samp>。<samp class="ph codeph">TRANSITION</samp>函数的初始<samp class="ph codeph">state</samp>值为集合。
+                        Sets the initial <samp class="ph codeph">state</samp> value of the
+                          <samp class="ph codeph">TRANSITION</samp> function.</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__REDUCEKEYS">KEYS</dt>
+
+                      <dd class="dd pd">可选。默认为<samp class="ph codeph">[key, *]</samp>。当使用多个列进行归约，有必要指定哪些列为键（key）列以及哪些列为值（value）列。 默认的，任何不传递给<samp class="ph codeph">TRANSITION</samp>函数的列为键列，以及一个名为<samp class="ph codeph">key</samp>的列总是键列，即使它被传递给了<samp class="ph codeph">TRANSITION</samp>函数。专门的指示符<samp class="ph codeph">*</samp>表明所有的列都不会传递给<samp class="ph codeph">TRANSITION</samp>函数。如果该指示符在键的列表中没有呈现，那么所有没有匹配的列都将会被丢弃。</dd>
+
+                    
+                  </dl>
+</dd>
+
+              
+              
+                <dt class="dt pt dlterm" id="topic3__TASK">TASK</dt>
+
+                <dd class="dd pd">可选。一个<samp class="ph codeph">TASK</samp>定义了一个在Greenplum MapReduce作业流水线内完整的端到端的
+                    <samp class="ph codeph">INPUT</samp>/<samp class="ph codeph">MAP</samp>/<samp class="ph codeph">REDUCE</samp> 阶段。和 <a class="xref" href="#topic3__EXECUTE">EXECUTE</a> 很相似，处理它不是立刻执行。一个任务对象能够作为<a class="xref" href="#topic3__INPUT">INPUT</a>调用一直到更进一步的处理阶段。<dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__TASKNAME">NAME</dt>
+
+                      <dd class="dd pd">要求。该任务的名称。一个名称对比该MapReduce作业中的其它对象（例如map函数、任务、reduce函数以及输出名称）的名称是唯一的。另外，名称也不能同数据库已经存在的对象（例如，表、函数或者视图）名称冲突。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__SOURCE">SOURCE</dt>
+
+                      <dd class="dd pd">一个<a class="xref" href="#topic3__INPUT">INPUT</a>或者另一个
+                        <samp class="ph codeph">TASK</samp>的名称。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TASKMAP">MAP</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">可选。一个<a class="xref" href="#topic3__MAP">MAP</a>函数的名称。
+                         如果没有指定，默认为<samp class="ph codeph">IDENTITY</samp>。</p>
+
+                      </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TASKREDUCE">REDUCE</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">可选。一个 <a class="xref" href="#topic3__REDUCE">REDUCE</a> 函数的名称。如果没有指定，默认为<samp class="ph codeph">IDENTITY</samp>.</p>
+
+                      </dd>
+
+                    
+                  </dl>
+</dd>
+
+              
+            </dl>
+</dd>
+
+        
+        
+          <dt class="dt pt dlterm" id="topic3__EXECUTE">EXECUTE</dt>
+
+          <dd class="dd pd">要求。<samp class="ph codeph">EXECUTE</samp>定义在Greenplum MapReduce作业流水线中最后的 <samp class="ph codeph">INPUT</samp>/<samp class="ph codeph">MAP</samp>/<samp class="ph codeph">REDUCE</samp>阶段。<dl class="dl parml">
+              
+                <dt class="dt pt dlterm" id="topic3__RUN">RUN</dt>
+
+                <dd class="dd pd">
+                  <dl class="dl parml">
+                    
+                      <dt class="dt pt dlterm" id="topic3__EXECUTESOURCE">SOURCE</dt>
+
+                      <dd class="dd pd">要求。一个 <a class="xref" href="#topic3__INPUT">INPUT</a>或者 <a class="xref" href="#topic3__TASK">TASK</a>的名称。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__TARGET">TARGET</dt>
+
+                      <dd class="dd pd">
+                        <p class="p">可选。一个<a class="xref" href="#topic3__OUTPUT">OUTPUT</a>的名称。默认输出为<samp class="ph codeph">STDOUT</samp>。</p>
+
+                      </dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__EXECUTEMAP">MAP</dt>
+
+                      <dd class="dd pd">可选。一个 <a class="xref" href="#topic3__MAP">MAP</a>函数的名称。
+                       如果没有指定，默认为<samp class="ph codeph">IDENTITY</samp>。</dd>
+
+                    
+                    
+                      <dt class="dt pt dlterm" id="topic3__EXECUTEREDUCE">REDUCE</dt>
+
+                      <dd class="dd pd">可选。一个<a class="xref" href="#topic3__REDUCE">REDUCE</a>函数的名称。默认为 <samp class="ph codeph">IDENTITY</samp>。</dd>
+
+                    
+                  </dl>
+
+                </dd>
+
+              
+            </dl>
+</dd>
+
+        
+      </dl>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic59">
+    <h2 class="title topictitle2">关于Greenplum MapReduce文档的示例</h2>
+
+    <div class="body">
+      <pre class="pre codeblock"># 该MapReduce作业示例处理文档同时查找它们中的关键词。
+# 它接受两个数据库的表作为输入：
+#   - 文档 (doc_id integer, url text, data text)
+# - 关键词 (keyword_id integer, keyword text)#
+# 在文档数据中搜素关键词的出现，返回url、data、keyword的结果（一个keyword可以为多个单词，例如"high performance # computing"）
+%YAML 1.1
+---
+VERSION:1.0.0.1
+
+# 使用该数据库和角色连接到Greenplum数据库
+DATABASE:webdata
+USER:jsmith
+
+# 开始定义部分
+DEFINE:
+
+ # 声明输入，从‘documents’和‘keyword’表中选择所有的列和行。
+- INPUT:
+NAME:doc
+TABLE:documents
+- INPUT:
+NAME:kw
+TABLE:keywords
+# 定义映射函数从documents和keyword中提取术语
+# 该示例简单的利用空格进行分割，但是这里可以
+# 利用像python的nltk（the natural language toolkit）库
+# 来执行更复杂的单词标记和提取词干。
+ - MAP:
+NAME:doc_map
+ LANGUAGE:python
+ FUNCTION:|
+        i = 0            # 文档中一个单词的索引
+terms = {}#文档中术语和他们索引的一个hash
+# 变成小写形式同时用空格分割字符串
+for term in data.lower().split():
+i = i + 1# 增加i（索引）
+
+        # 检查在术语列表中的术语Check for the term in the terms list:
+        # 如果主干词语已经存在，添加i的值到数组的入口
+        # 对应术语。这里考虑一个词语的多次出现。
+        # 如果主干词语不存在，添加它到词典的位置i处。
+        # 例如：
+ # data: "a computer is a machine that manipulates data"
+ # "a" [1, 4]
+ # "computer" [2]
+ # "machine" [3]
+ # …
+          if term in terms:
+            terms[term] += ','+str(i)
+          else:
+            terms[term] = str(i)
+
+# 每个文档返回多个行。每行由
+#  doc_id,  term 以及 出现term的数据的位置
+        # For example: 
+        #   (doc_id =&gt; 100, term =&gt; "a", [1,4]
+        #   (doc_id =&gt; 100, term =&gt; "computer", [2]
+        #    …
+for term in terms:
+yield([doc_id, term, terms[term]])
+      OPTIMIZE:STRICT IMMUTABLE
+      PARAMETERS:
+- doc_id integer
+        - data text
+RETURNS:
+- doc_id integer
+        - term text
+        - positions text
+
+  # 关键词的关于文档的映射函数差不多为一个The map function for keywords is almost identical to the one for documents
+ # 但是它也计算了关键词中术语的数目。but it also counts of the number of terms in the keyword.
+ - MAP:
+NAME:kw_map
+LANGUAGE:python
+FUNCTION:|
+        i = 0
+        terms = {}
+        for term in keyword.lower().split():
+          i = i + 1
+          if term in terms:
+            terms[term] += ','+str(i)
+          else:
+            terms[term] = str(i)
+
+ # 输出四个值包括i（术语出现的总次数）：output 4 values including i (the total count for term in terms):
+yield([keyword_id, i, term, terms[term]])
+      OPTIMIZE:STRICT IMMUTABLE
+PARAMETERS:
+- keyword_id integer
+        - keyword text
+RETURNS:
+- keyword_id integer
+        - nterms integer
+        - term text
+        - positions text
+
+# 一个任务是一个定义了在Greenplum MapReduce流水线上整个INPUT/MAP/REDUCE的阶段。
+# 这很像是一个EXECUTION，但是只有在一输入到其他处理阶段被调用时，才会执行。
+# 识别一个称为'doc_prep'的任务，该任务接受先前定义的 'doc' INPUT
+# 同时执行‘doc_map’ MAP函数返回doc_id, term, [term_position]
+- TASK:
+NAME:doc_prep
+SOURCE:doc
+MAP:doc_map
+
+# 识别一个称为'kw_prep'的任务，该任务接受 先前定义的'kw' INPUT
+# 同时执行kw_map MAP 函数返回kw_id, term, [term_position]
+- TASK:
+NAME:kw_prep
+SOURCE:kw
+MAP:kw_map
+
+# Greenplum MapReduce的一个优势是MapReduce任务可以作为
+# SQL操作的输入，同时SQL也能用来执行一个MapReduce任务。
+# 该INPUT定义了一个SQL查询，此查询将'doc_prep' TASK的输出同
+# 'kw_prep' TASK的进行连接。匹配项是'candidate'列表的输出 Matching terms are output to the 'candidate'
+# (任何一个关键词至少共享同文档共享一个term)。any keyword that shares at least one term with the document).
+- INPUT:
+NAME: term_join
+QUERY: |
+        SELECT doc.doc_id, kw.keyword_id, kw.term, kw.nterms,
+               doc.positions as doc_positions,
+               kw.positions as kw_positions
+          FROM doc_prep doc INNER JOIN kw_prep kw ON (doc.term = kw.term)
+
+# 在Greenplum的MapReduce中，一个REDUCE函数有一个或者多个函数组成。
+# 一个REDUCE为每个分组键定义有一个初始的‘state’变量。 that is
+# 这是一个用于调节每个键分组状态的过渡函数。
+# 如果呈现，一个可选的CONSOLIDATE函数结合了多个
+# 'state' 变量。这允许TRANSITION函数能够在segment级别执行在本地，同时值在整个网络中
+# 重分布积累的‘state’。如果呈现，一个可选FINALIZE函数被使用来执行在一个状态上最后的计算
+# 同时发射从状态来的一个或者多个输出行。
+#
+# 该REDUCE函数被称为‘term_reducer’带有一个被称为'term_transition'的TRANSITION函数
+#以及一个被称为'term_finalizer'的FINALIZE函数。
+- REDUCE:
+NAME:term_reducer
+TRANSITION:term_transition
+FINALIZE:term_finalizer
+
+- TRANSITION:
+NAME:term_transition
+ LANGUAGE:python
+ PARAMETERS:
+- state text
+        - term text
+        - nterms integer
+        - doc_positions text
+        - kw_positions text
+FUNCTION: |
+
+ # 'state' 有一个''的初始值以及使用冒号分隔的关键词位置的集合。
+        # 关键词位置是用逗号分隔的整数集。例如，'1,3,2:4:'
+        # 如果这里存在一个状态，分割它到关键词位置的集合，否则，
+ # 构建一个'nterms'关键词位置的集合。所有的空
+if state:
+          kw_split = state.split(':')
+        else:
+          kw_split = []
+          for i in range(0,nterms):
+            kw_split.append('')
+
+        # 'kw_positions'是一个整数分隔的逗号域，显示
+ # 单个在给定关键词出现的位置。
+        # 基于','分割转换字符串到一个python 列表。
+ # 为当前term添加doc_positions
+for kw_p in kw_positions.split(','):
+          kw_split[int(kw_p)-1] = doc_positions
+
+        # 该部分接受每个在'kw_split'数组中的元素，同时使用':'连接，将它们
+        # 转换为字符串。
+ # 例如：对于关键词 "computer software computer hardware"，
+        # 与文档数据"in the business of computer software software engineers" 匹配的
+        # 'kw_split'数组将为 ['5', '6,7', '5', '']
+ # 同时输出状态将为：5:6,7:5:
+outstate = kw_split[0]
+        for s in kw_split[1:]:
+          outstate = outstate + ':' + s
+        return outstate
+
+   - FINALIZE:
+NAME: term_finalizer
+LANGUAGE: python
+RETURNS:
+        - count integer
+      MODE:MULTI
+      FUNCTION:|
+        if not state:
+          return 0
+        kw_split = state.split(':')
+
+        # 函数做了下面的事情：
+ # 1) 以':'分割'kw_split'
+        #    例如, 1,5,7:2,8 创建了 '1,5,7' 和 '2,8'
+ # 2) 在'kw_split'中的每个组的位置，以','分割集合，
+        #    从集合0: 1,5,7创建['1','5','7']
+        #    以及从集合1: 2,8创建 ['2', '8']
+# 3)检查空字符串
+ # 4) 通过减去集合在'kw_split'中的位置来调整分割集
+ # ['1','5','7'] - 0（从每个元素中） = ['1','5','7']
+ # ['2', '8'] - 1 （从每个元素中） = ['1', '7']
+        # 5)以步长为4的来截取数组后的结果数组被分割，他们的重叠值为：
+        #    ['1','5','7'].intersect['1', '7'] = [1,7]
+        # 6) 决定分割长度，整个关键词（包括所有的小片）在文档数据中匹配的次数。
+previous = None
+        for i in range(0,len(kw_split)):
+          isplit = kw_split[i].split(',')
+          if any(map(lambda(x): x == '', isplit)):
+            return 0
+          adjusted = set(map(lambda(x): int(x)-i, isplit))
+          if (previous):
+            previous = adjusted.intersection(previous)
+          else:
+            previous = adjusted
+
+        # 返回最终的计数
+if previous:
+          return len(previous)
+
+   # 定义'term_match' 任务，该任务之后作为
+   # 'final_output'查询的一部分执行。它接受之前定义的输入 （INPUT） 'term_join'
+   # 同时使用之前定义的归约函数'term_reducer'
+ - TASK:
+NAME:term_match
+SOURCE:term_join
+REDUCE:term_reducer
+- INPUT:
+NAME:final_output
+QUERY:|
+        SELECT doc.*, kw.*, tm.count
+        FROM documents doc, keywords kw, term_match tm
+        WHERE doc.doc_id = tm.doc_id
+          AND kw.keyword_id = tm.keyword_id
+          AND tm.count &gt; 0
+
+# 执行该MapReduce作业，发送结果到STDOUT
+EXECUTE:
+ - RUN:
+SOURCE:final_output
+TARGET:STDOUT</pre>
+
+    </div>
+
+    <div class="topic nested2" xml:lang="en" lang="en" id="topic60">
+      <h3 class="title topictitle3">MapReduce实例的流程图</h3>
+
+      <div class="body">
+        <p class="p">下面的图显示了在示例中定义的MapReduce作业的流程：</p>
+
+        <br><img class="image" src="./graphics/mapreducejob.jpg" width="487" height="634"><br>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

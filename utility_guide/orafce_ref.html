@@ -1,0 +1,7366 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400italic,400,600' rel='stylesheet' type='text/css'>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Oracle兼容性函数 |
+    Greenplum数据库文档
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  
+</head>
+
+<body class="docs docs_utility_guide docs_utility_guide_orafce_ref has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "greenplum.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Greenplum数据库文档</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      <div class="header-item"><a href="http://greenplum.org">返回Greenplum数据库</a></div>
+      <div class="header-item">
+        <a href="https://github.com/greenplum-db/gpdb/wiki">Wiki</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="nav-container js-sidenav" role="navigation" >
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+    文档索引
+  </a>
+  <div class="nav-content">
+    
+  <ul>
+    
+      <li class="">
+        <a href="/docs/common/gpdb-features.html">关于此文档</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/best_practices/intro.html">最佳实践</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/best_practices/summary.html">最佳实践概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/sysconfig.html">系统配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/schema.html">模式设计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/workloads.html">内存和负载管理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/best_practices/maintenance.html">系统监控和维护</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/best_practices/analyze.html">用ANALYZE更新统计信息</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/bloat.html">在数据库中管理膨胀</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/logfiles.html">监控Greenplum数据库日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/data_loading.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/gptransfer.html">用gptransfer迁移数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/security.html">安全性</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/kerberos-hdfs.html">访问Kerberos化的Hadoop集群</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/tuning_queries.html">调优SQL查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/best_practices/ha.html">高可用性</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/security-guide/topics/preface.html">安全性配置指南</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/SecuringGPDB.html">保护数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/ports_and_protocols.html">Greenplum数据库端口和协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Authenticate.html">配置客户端认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Authorization.html">配置数据库授权</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/审计.html">审计</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/Encryption.html">加密数据和数据库连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/kerberos-hdfs.html">用受Kerberos保护的Hadoop集群启用gphdfs认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/security-guide/topics/BestPractices.html">安全性最佳实践</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/admin_guide.html">管理员指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/intro/partI.html">Greenplum数据库概念</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/arch_overview.html">关于Greenplum的架构</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_utilities.html">关于管理和监控工具</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/intro/about_mvcc.html">关于Greenplum数据库中的并发控制</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/mvcc_example.html">管理事务ID的例子</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_loading.html">关于并行数据装载</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_ha.html">关于Greenplum数据库中的冗余和故障切换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/intro/about_statistics.html">关于Greenplum数据库中的数据库统计信息</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/managing/partII.html">管理一个Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/startstop.html">启动和停止Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/access_db/topics/g-accessing-the-database.html">访问数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-establishing-a-database-session.html">建立一个数据库会话</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-supported-client-applications.html">支持的客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-greenplum-database-client-applications.html">Greenplum数据库客户端应用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-connecting-with-psql.html">用psql连接</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/pgbouncer.html">使用PgBouncer连接池</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-database-application-interfaces.html">数据库应用接口</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/access_db/topics/g-troubleshooting-connection-problems.html">连接问题的发现及解决</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-configuring-the-greenplum-system.html">配置Greenplum数据库系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-about-greenplum-master-and-local-parameters.html">关于Greenplum数据库的Master参数和本地参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-setting-configuration-parameters.html">设置配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-a-local-configuration-parameter.html">设置本地配置参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-setting-a-master-configuration-parameter.html">设置Master配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-system-level.html">在系统级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-database-level.html">在数据库级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-at-the-role-level.html">在角色级别设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-setting-parameters-in-a-session.html">在会话中设置参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-viewing-server-configuration-parameter-settings.html">查看服务器配置参数设置</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-configuration-parameter-categories.html">配置参数种类</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-connection-and-authentication-parameters.html">连接和认证参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-connection-parameters.html">连接参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-security-and-authentication-parameters.html">安全性和认证参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-system-resource-consumption-parameters.html">系统资源消耗参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-memory-consumption-parameters.html">内存消耗参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-free-space-map-parameters.html">空闲空间映射参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-os-resource-parameters.html">操作系统资源参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-cost-based-vacuum-delay-parameters.html">基于代价的清理延迟参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-transaction-id-management-parameters.html">事务ID管理参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-query-tuning-parameters.html">查询调节参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/gporca-parameters.html">GPORCA 配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-query-plan-operator-control-parameters.html">查询计划操作符控制参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-query-planner-costing-parameters.html">传统查询优化器代价参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-database-statistics-sampling-parameters.html">数据库统计信息采样参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-sort-operator-configuration-parameters.html">排序操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-aggregate-operator-configuration-parameters.html">聚集操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-join-operator-configuration-parameters.html">连接操作符配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-other-query-planner-configuration-parameters.html">其他传统查询优化器配置参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-error-reporting-and-logging-parameters.html">错误报告和日志参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-log-rotation.html">日志轮转</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-when-to-log.html">什么时候记录日志</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-what-to-log.html">记录什么</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-system-monitoring-parameters.html">系统监控参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-snmp-alerts.html">SNMP报警</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-email-alerts.html">Email报警</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-command-center-agent.html">Greenplum命令中心代理</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-runtime-statistics-collection-parameters.html">运行时统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-automatic-statistics-collection-parameters.html">自动统计信息收集参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-client-connection-default-parameters.html">客户端连接默认参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-statement-behavior-parameters.html">语句行为参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-locale-and-formatting-parameters.html">区域和格式化参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-other-client-default-parameters.html">其他客户端默认参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-lock-management-parameters.html">锁管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-workload-management-parameters.html">负载管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-external-table-parameters.html">外部表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-append-optimized-table-parameters.html">数据库表参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-database-and-tablespace-filespace-parameters.html">数据库和表空间&#x2F;文件空间参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-past-postgresql-version-compatibility-parameters.html">以往的PostgreSQL版本兼容参数</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/topics/g-greenplum-array-configuration-parameters.html">Greenplum阵列配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-interconnect-configuration-parameters.html">Interconnect配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-dispatch-configuration-parameters.html">分派配置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-fault-operation-parameters.html">错误操作参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-distributed-transaction-management-parameters.html">分布式事务管理参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-read-only-parameters.html">只读参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-master-mirroring-parameters.html">Greenplum的Master和Segment镜像参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/topics/g-greenplum-extension-parameters.html">Greenplum数据库扩展参数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-high-availability-features.html">启用高可用特性</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-high-availability-in-greenplum-database.html">Greenplum数据库高可用性概述</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-segment-mirroring.html">Segment镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-master-mirroring.html">Master镜像概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-overview-of-fault-detection-and-recovery.html">故障检测与恢复概述</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-mirroring-in-greenplum-database.html">在Greenplum数据库中启用镜像</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-segment-mirroring.html">启用Segment镜像</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-master-mirroring.html">启用Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-detecting-a-failed-segment.html">检测失效的Segment</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-enabling-alerts-and-notifications.html">启用告警和通知</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-checking-for-failed-segments.html">检查失效的Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-checking-the-log-files.html">为失效Segment检查日志文件</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-a-failed-segment.html">恢复失效的Segment</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-from-segment-failures.html">从Segment失效中恢复</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-when-a-segment-host-is-not-recoverable.html">当一台Segment主机不可恢复时</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/gprecover-steps.html">关于Segment恢复处理</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/highavail/topics/g-recovering-a-failed-master.html">恢复失效的Master</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/highavail/topics/g-restoring-master-mirroring-after-a-recovery.html">在恢复后还原Master镜像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/managing/backup-main.html">备份和恢复数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-overview.html">备份和恢复概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-gpcrondump.html">用gpcrondump备份</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-sets.html">备份表集合</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-incremental.html">创建增量备份</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-locks.html">备份处理和锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-direct-io.html">使用直接I&#x2F;O</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-named-pipes.html">使用命名管道</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/backup-veritas.html">用Veritas NetBackup备份数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/restore-parallel.html">恢复Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/gpdbrestore.html">使用gpdbrestore恢复数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/restore-diff-system.html">恢复到不同的Greenplum系统配置</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/expand/expand-main.html">扩展Greenplum系统</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-overview.html">系统扩展概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-planning.html">规划Greenplum系统扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-nodes.html">准备并且增加节点</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-initialize.html">初始化新Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-redistribute.html">重分布表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/expand/expand-rm-schema.html">移除扩展方案</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/gptransfer.html">用gptransfer迁移数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/monitor.html">监控Greenplum系统</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/managing/maintain.html">日常系统维护任务</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/monitoring/monitoring.html">推荐的监控和维护任务</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partIII.html">管理Greenplum数据库访</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/client_auth.html">配置客户端认证</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ldap.html">使用带TLS&#x2F;SSL的LDAP认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos.html">使用Kerberos认证</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos-lin-client.html">为Linux客户端配置Kerberos</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/kerberos-win-client.html">为Windows客户端配置Kerberos</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/roles_privs.html">管理角色和特权</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partIV.html">使用数据库</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/ddl/ddl.html">定义数据库对象</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-database.html">创建和管理数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-tablespace.html">创建和管理表空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-schema.html">创建和管理方案</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-table.html">创建和管理表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-storage.html">选择表存储模型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-partition.html">对大型表分区</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-sequence.html">创建和使用序列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-index.html">在Greenplum数据库中使用索引</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/ddl/ddl-view.html">创建和管理视图</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/dml.html">管理数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-loading-and-unloading-data.html">装载和卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-working-with-file-based-ext-tables.html">使用基于文件的外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-external-tables.html">访问基于文件的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-file-protocol.html">file:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpfdist-protocol.html">gpfdist:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpfdists-protocol.html">gpfdists:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gphdfs-protocol.html">gphdfs:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-s3-protocol.html">s3:&#x2F;&#x2F;协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-accessing-ext-files-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-handling-errors-ext-table-data.html">处理外部表数据中的错误</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-the-greenplum-parallel-file-server--gpfdist-.html">使用Greenplum的并行文件服务器（gpfdist）</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-about-gpfdist-setup-and-performance.html">有关gpfdist设置和性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-controlling-segment-parallelism.html">控制Segment并行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-installing-gpfdist.html">安装gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-starting-and-stopping-gpfdist.html">启动和停止gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-troubleshooting-gpfdist.html">解决gpfdist的问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-hadoop-distributed-file-system--hdfs--tables.html">使用Hadoop分布式文件系统（HDFS）表</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-one-time-hdfs-protocol-installation.html">一次性HDFS协议安装</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-grant-privileges-for-the-hdfs-protocol.html">为HDFS协议授予特权</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-specify-hdfs-data-in-an-external-table-definition.html">在外部表定义中指定HDFS数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-setting-compression-options-for-hadoop-writable-external-tables.html">为Hadoop可写外部表设置压缩选项</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-readable-and-writable-external-table-examples.html">HDFS可读和可写外部表实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-reading-and-writing-custom-formatted-hdfs-data.html">读写自定义格式的HDFS数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-read-custom-formatted-data-from-hdfs.html">例 1 - 从HDFS读取自定义格式数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-sample-mapreduce-code.html">MapReduce代码示例</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-run-create-external-table.html">运行CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-write-custom-formatted-data-from-greenplum-database-to-hdfs.html">例 2 - 从Greenplum数据库写自定义格式的数据到HDFS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-mapreduce-sample-code.html">MapReduce示例代码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gphdfs-jvm.html">有关gphdfs的JVM内存</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-emr-config.html">将Amazon EMR用于安装在AWS上的Greenplum数据库</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-avro-format.html">对Avro文件的支持</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-hdfs-parquet-format.html">对Parquet文件的支持</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-creating-and-using-web-external-tables.html">创建并使用外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-command-based-web-external-tables.html">基于命令的外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-url-based-web-external-tables.html">基于URL的外部Web表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-using-an-external-table.html">使用外部表装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-loading-and-writing-non-hdfs-custom-data.html">装载和写入非HDFS自定义数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-using-a-custom-format.html">使用一种自定义格式</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-importing-and-exporting-fixed-width-data.html">导入和导出固定宽度的数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-examples-read-fixed-width-data.html">例子：读取宽度固定的数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-using-a-custom-protocol.html">使用自定义协议</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-creating-external-tables---examples.html">创建外部表 - 例子</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-single-gpfdist-instance-on-single-nic-machine.html">例 1—单NIC机器上的单gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-multiple-gpfdist-instances.html">例 2—多gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-3-multiple-gpfdists-instances.html">例 3—多gpfdists实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-4-single-gpfdist-instance-with-error-logging.html">例 4—带错误日志的单gpfdist实例</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-5-text-format-on-a-hadoop-distributed-file-server.html">例 5—一个Hadoop分布式文件服务器上的TEXT格式</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-6-multiple-files-in-csv-format-with-header-rows.html">例 6—多个有头部行的CSV格式文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-7-readable-web-external-table-with-script.html">例 7—使用脚本的可读外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-8-writable-external-table-with-gpfdist.html">例 8—使用gpfdist的可写外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-9-writable-external-web-table-with-script.html">例 9—使用脚本的可写外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-10-readable-and-writable-external-tables-with-xml-transformations.html">例 10—使用XML转换的可读写外部表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-handling-load-errors.html">处理装载错误</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-define-an-external-table-with-single-row-error-isolation.html">定义一个带有单行错误隔离的外部表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-create-an-error-table-and-declare-a-reject-limit.html">捕捉行格式化错误并且声明拒绝极限</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-viewing-bad-rows-in-the-error-table-or-error-log.html">在错误日志中查看不正确的行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-identifying-invalid-csv-files-in-error-table-data.html">在错误表数据中标识非法CSV文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-moving-data-between-tables.html">在表之间移动数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-with-gpload.html">用gpload装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-loading-data-with-copy.html">用COPY装载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-running-copy-in-single-row-error-isolation-mode.html">在单行错误隔离模式中运行COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-optimizing-data-load-and-query-performance.html">优化数据装载和查询性能</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-from-greenplum-database.html">从Greenplum数据库卸载数据</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-defining-a-file-based-writable-external-table.html">定义基于文件的可写外部表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-greenplum-file-server-gpfdist.html">例 1—Greenplum文件服务器（gpfdist）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-hadoop-file-server-gphdfs.html">例 2—Hadoop文件系统(gphdfs）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-defining-a-command-based-writable-external-web-table.html">定义基于命令的可写外部Web表</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-disabling-execute-for-web-or-writable-external-tables.html">为Web或者可写外部表禁用EXECUTE</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-using-a-writable-external-table.html">使用可写外部表卸载数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-unloading-data-using-copy.html">使用COPY卸载数据</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-transforming-xml-data.html">转换XML数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-determine-the-transformation-schema.html">确定转换方案</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-write-a-transform.html">编写转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-write-the-gpfdist-configuration.html">编写gpfdist配置</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-load-the-data.html">装载数据</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-transfer-and-store-the-data.html">传输和存储数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-transforming-with-gpload.html">用GPLOAD转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-transforming-with-insert-into-select-from.html">用INSERT INTO SELECT FROM转换</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-configuration-file-format.html">配置文件格式</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-xml-transformation-examples.html">XML转换示例</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-1-dblp-database-publications-in-demo-directory.html">基于命令的外部Web表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-2-irs-mef-xml-files-in-demo-directory.html">例 2 - IRS MeF XML 文件（在demo目录中）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-example-3-witsml-files-in-demo-directory.html">例 3 - WITSML™ 文件 （在demo目录中）</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-formatting-data-files.html">格式化数据文件</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-formatting-rows.html">格式化行</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-formatting-columns.html">格式化列</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-representing-null-values.html">表示NULL值</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-escaping.html">转义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-escaping-in-text-formatted-files.html">在文本格式的文件中转义</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-escaping-in-csv-formatted-files.html">在CSV格式的文件中转义</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-character-encoding.html">字符编码</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-example-custom-data-access-protocol.html">自定义数据访问协议实例</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/load/topics/g-installing-the-external-table-protocol.html">安装外部表协议</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/load/topics/g-gpextprotocal.c.html">gpextprotocal.c</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/query/topics/query.html">查询数据</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/parallel-proc.html">关于Greenplum的查询处理</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/query/topics/query-piv-optimizer.html">关于GPORCA</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-overview.html">GPORCA概述</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-enable.html">启用和禁用GPORCA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-notes.html">使用GPORCA时的考虑</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-features.html">GPORCA特性和增强</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-changed.html">GPORCA带来的改变</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-limitations.html">GPORCA的限制</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-opt-fallback.html">判断被使用的查询优化器</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-piv-uniform-part-tbl.html">关于统一多级分区表</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/defining-queries.html">定义查询</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/functions-operators.html">使用函数和操作符</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/json-data.html">使用JSON数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/xml-data.html">使用XML数据</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-performance.html">查询性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/spill-files.html">管理查询生成的溢出文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/query/topics/query-profiling.html">查询画像</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/admin_guide/partV.html">管理性能</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_intro.html">定义数据库性能</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_issues.html">性能问题的常见原因</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/workload_mgmt.html">用资源队列进行工作负载管理</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/admin_guide/perf_troubleshoot.html">检修性能问题</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/utility_guide.html">工具指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/admin_utilities/util_ref.html">管理工具参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/analyzedb.html">analyzedb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpactivatestandby.html">gpactivatestandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpaddmirrors.html">gpaddmirrors</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheck.html">gpcheck</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheckcat.html">gpcheckcat</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcheckperf.html">gpcheckperf</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpconfig.html">gpconfig</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpcrondump.html">gpcrondump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpdbrestore.html">gpdbrestore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpdeletesystem.html">gpdeletesystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpexpand.html">gpexpand</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpfdist.html">gpfdist</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpfilespace.html">gpfilespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpinitstandby.html">gpinitstandby</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpinitsystem.html">gpinitsystem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpload.html">gpload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gplogfilter.html">gplogfilter</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpmapreduce.html">gpmapreduce</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpmfr.html">gpmfr</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpperfmon_install.html">gpperfmon_install</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gppkg.html">gppkg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gprecoverseg.html">gprecoverseg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpreload.html">gpreload</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpscp.html">gpscp</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpseginstall.html">gpseginstall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpssh.html">gpssh</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpssh-exkeys.html">gpssh-exkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstart.html">gpstart</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstate.html">gpstate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpstop.html">gpstop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gpsys.html">gpsys1</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/gptransfer.html">gptransfer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/admin_utilities/pgbouncer-ref.html">pgbouncer</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/cli_ref.html">客户端工具参考</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/utility_guide/client_utilities/ClientUtilitySummary.html">客户端工具摘要</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/clusterdb.html">clusterdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createdb.html">createdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createuser.html">createuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/dropdb.html">dropdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/droplang.html">droplang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/dropuser.html">dropuser</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/createlang.html">createlang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_config.html">pg_config</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_dump.html">pg_dump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_dumpall.html">pg_dumpall</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/pg_restore.html">pg_restore</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/psql.html">psql</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/reindexdb.html">reindexdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/client_utilities/vacuumdb.html">vacuumdb</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/orafce_ref.html">Oracle兼容性函数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/utility_guide/dblink.html">dblink函数</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/ref_guide.html">Greenplum数据库参考指南</a>
+        
+  <ul>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/sql_commands/sql_ref.html">SQL命令参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/GPReferenceSQLSummaryLOP.html">SQL语法概要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ABORT.html">ABORT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_AGGREGATE.html">ALTER AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_CONVERSION.html">ALTER CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_DATABASE.html">ALTER DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_DOMAIN.html">ALTER DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_EXTENSION.html">ALTER EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_EXTERNAL_TABLE.html">ALTER EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_FILESPACE.html">ALTER FILESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_FUNCTION.html">ALTER FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_GROUP.html">ALTER GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_INDEX.html">ALTER INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_LANGUAGE.html">ALTER LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR.html">ALTER OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR_CLASS.html">ALTER OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_OPERATOR_FAMILY.html">ALTER OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_PROTOCOL.html">ALTER PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_RESOURCE_QUEUE.html">ALTER RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_ROLE.html">ALTER ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_SCHEMA.html">ALTER SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_SEQUENCE.html">ALTER SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TABLE.html">ALTER TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TABLESPACE.html">ALTER TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_TYPE.html">ALTER TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_USER.html">ALTER USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ALTER_VIEW.html">ALTER VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ANALYZE.html">ANALYZE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/BEGIN.html">BEGIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CHECKPOINT.html">CHECKPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CLOSE.html">CLOSE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CLUSTER.html">CLUSTER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COMMENT.html">COMMENT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COMMIT.html">COMMIT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/COPY.html">COPY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_AGGREGATE.html">CREATE AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_CAST.html">CREATE CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_CONVERSION.html">CREATE CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_DATABASE.html">CREATE DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_DOMAIN.html">CREATE DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_EXTENSION.html">CREATE EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_EXTERNAL_TABLE.html">CREATE EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_FUNCTION.html">CREATE FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_GROUP.html">CREATE GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_INDEX.html">CREATE INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_LANGUAGE.html">CREATE LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR.html">CREATE OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR_CLASS.html">CREATE OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_OPERATOR_FAMILY.html">CREATE OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_PROTOCOL.html">CREATE PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_RESOURCE_QUEUE.html">CREATE RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_ROLE.html">CREATE ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_RULE.html">CREATE RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_SCHEMA.html">CREATE SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_SEQUENCE.html">CREATE SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLE.html">CREATE TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLE_AS.html">CREATE TABLE AS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TABLESPACE.html">CREATE TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_TYPE.html">CREATE TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_USER.html">CREATE USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/CREATE_VIEW.html">CREATE VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DEALLOCATE.html">DEALLOCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DECLARE.html">DECLARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DELETE.html">DELETE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DISCARD.html">DISCARD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DO.html">DO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_AGGREGATE.html">DROP AGGREGATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_CAST.html">DROP CAST</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_CONVERSION.html">DROP CONVERSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_DATABASE.html">DROP DATABASE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_DOMAIN.html">DROP DOMAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_EXTENSION.html">DROP EXTENSION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_EXTERNAL_TABLE.html">DROP EXTERNAL TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_FILESPACE.html">DROP FILESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_FUNCTION.html">DROP FUNCTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_GROUP.html">DROP GROUP</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_INDEX.html">DROP INDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_LANGUAGE.html">DROP LANGUAGE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR.html">DROP OPERATOR</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR_CLASS.html">DROP OPERATOR CLASS</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OPERATOR_FAMILY.html">DROP OPERATOR FAMILY</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_OWNED.html">DROP OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_PROTOCOL.html">DROP PROTOCOL</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_RESOURCE_QUEUE.html">DROP RESOURCE QUEUE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_ROLE.html">DROP ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_RULE.html">DROP RULE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_SCHEMA.html">DROP SCHEMA</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_SEQUENCE.html">DROP SEQUENCE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TABLE.html">DROP TABLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TABLESPACE.html">DROP TABLESPACE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_TYPE.html">DROP TYPE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_USER.html">DROP USER</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/DROP_VIEW.html">DROP VIEW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/END.html">END</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/EXECUTE.html">EXECUTE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/EXPLAIN.html">EXPLAIN</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/FETCH.html">FETCH</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/GRANT.html">GRANT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/INSERT.html">INSERT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/LOAD.html">LOAD</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/LOCK.html">LOCK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/MOVE.html">MOVE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/PREPARE.html">PREPARE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REASSIGN_OWNED.html">REASSIGN OWNED</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REINDEX.html">REINDEX</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/RELEASE_SAVEPOINT.html">RELEASE SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/RESET.html">RESET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/REVOKE.html">REVOKE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ROLLBACK.html">ROLLBACK</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/ROLLBACK_TO_SAVEPOINT.html">ROLLBACK TO SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SAVEPOINT.html">SAVEPOINT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SELECT.html">SELECT</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SELECT_INTO.html">SELECT INTO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET.html">SET</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_ROLE.html">SET ROLE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_SESSION_AUTHORIZATION.html">SET SESSION AUTHORIZATION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SET_TRANSACTION.html">SET TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/SHOW.html">SHOW</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/START_TRANSACTION.html">START TRANSACTION</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/TRUNCATE.html">TRUNCATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/UPDATE.html">UPDATE</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/VACUUM.html">VACUUM</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/sql_commands/VALUES.html">VALUES</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/SQL2008_support.html">SQL 2008可选特性符合</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/env_var_ref.html">Greenplum环境变量</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref.html#topic1">系统目录参考</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-tables.html#topic1">系统表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-views.html#topic1">系统视图</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/system_catalogs/catalog_ref-html.html#topic1">系统目录定义</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_configuration_history.html">gp_configuration_history</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_db_interfaces.html">gp_db_interfaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distributed_log.html">gp_distributed_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distributed_xacts.html">gp_distributed_xacts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_distribution_policy.html">gp_distribution_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gpexpand_expansion_progress.html">gpexpand.expansion_progress</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_expansion_status.html">gpexpand.status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_expansion_tables.html">gpexpand.status_detail</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_fastsequence.html">gp_fastsequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_fault_strategy.html">gp_fault_strategy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_global_sequence.html">gp_global_sequence</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_id.html">gp_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_interfaces.html">gp_interfaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_database_node.html">gp_persistent_database_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_filespace_node.html">gp_persistent_filespace_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_relation_node.html">gp_persistent_relation_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_persistent_tablespace_node.html">gp_persistent_tablespace_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_pgdatabase.html">gp_pgdatabase</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_relation_node.html">gp_relation_node</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_resqueue_status.html">gp_resqueue_status</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_segment_configuration.html">gp_segment_configuration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_transaction_log.html">gp_transaction_log</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/gp_version_at_initdb.html">gp_version_at_initdb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_aggregate.html">pg_aggregate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_am.html">pg_am</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_amop.html">pg_amop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_amproc.html">pg_amproc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_appendonly.html">pg_appendonly</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attrdef.html">pg_attrdef</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attribute.html">pg_attribute</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_attribute_encoding.html">pg_attribute_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_auth_members.html">pg_auth_members</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_authid.html">pg_authid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_available_extension_versions.html">pg_available_extension_versions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_available_extensions.html">pg_available_extensions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_cast.html">pg_cast</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_class.html">pg_class</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_compression.html">pg_compression</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_constraint.html">pg_constraint</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_conversion.html">pg_conversion</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_database.html">pg_database</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_depend.html">pg_depend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_description.html">pg_description</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_enum.html">pg_enum</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_extension.html">pg_extension</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_exttable.html">pg_exttable</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_filespace.html">pg_filespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_filespace_entry.html">pg_filespace_entry</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_index.html">pg_index</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_inherits.html">pg_inherits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_language.html">pg_language</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_largeobject.html">pg_largeobject</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_listener.html">pg_listener</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_locks.html">pg_locks</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_max_external_files.html">pg_max_external_files</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_namespace.html">pg_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_opclass.html">pg_opclass</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_operator.html">pg_operator</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition.html">pg_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_columns.html">pg_partition_columns</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_encoding.html">pg_partition_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_rule.html">pg_partition_rule</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partition_templates.html">pg_partition_templates</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_partitions.html">pg_partitions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_pltemplate.html">pg_pltemplate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_proc.html">pg_proc</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resourcetype.html">pg_resourcetype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueue.html">pg_resqueue</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueue_attributes.html">pg_resqueue_attributes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_resqueuecapability.html">pg_resqueuecapability</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_rewrite.html">pg_rewrite</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_roles.html">pg_roles</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_shdepend.html">pg_shdepend</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_shdescription.html">pg_shdescription</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_activity.html">pg_stat_activity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_last_operation.html">pg_stat_last_operation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_last_shoperation.html">pg_stat_last_shoperation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_operations.html">pg_stat_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_partition_operations.html">pg_stat_partition_operations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stat_replication.html">pg_stat_replication</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_statistic.html">pg_statistic</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_stats_resqueue.html">pg_stat_resqueues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_tablespace.html">pg_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_trigger.html">pg_trigger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_type.html">pg_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_type_encoding.html">pg_type_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_user_mapping.html">pg_user_mapping</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/system_catalogs/pg_window.html">pg_window</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/gp_toolkit.html">gp_toolkit管理方案</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic2">检查需要日常维护的表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic5">检查锁</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic8">检查追加优化表</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic16">查看Greenplum服务器日志文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic21">检查服务器端配置文件</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic24">检查失效的Segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic26">检查资源队列的活动和状态</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic32">检查查询磁盘溢出空间使用</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic36">浏览用户和组（角色）</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic38">检查数据库对象的大小和磁盘空间</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gp_toolkit.html#topic49">检查不均匀的数据分布</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/gpperfmon/dbref.html">gpperfmon数据库</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-database.html"> database_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-diskspace.html"> diskspace_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-filerep.html"> filerep_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-interface-stats.html"> interface_stats_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-log-alert.html"> log_alert_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-queries.html">queries_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-segment.html"> segment_* </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-socket-stats.html">socket_stats_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-system.html">system_*</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-dynamic-memory-info.html">dynamic_memory_info </a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/gpperfmon/db-memory-info.html"> memory_info </a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/data_types.html">Greenplum数据库数据类型</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/character_sets.html">字符集支持</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/config_params/guc_config.html">服务器配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_config.html#topic_vsn_22l_z4">参数类型和值</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_config.html#topic_cyz_p2l_z4">设置参数</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc_category-list.html">参数分类</a>
+        
+
+      </li>
+    
+      <li class="has_submenu">
+        <a href="/docs/ref_guide/config_params/guc-list.html">配置参数</a>
+        
+  <ul>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#add_missing_from">add_missing_from</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#application_name">application_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#array_nulls">array_nulls</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#authentication_timeout">authentication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#backslash_quote">backslash_quote</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#block_size">block_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#bonjour_name">bonjour_name</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#check_function_bodies">check_function_bodies</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#client_encoding">client_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#client_min_messages">client_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_index_tuple_cost">cpu_index_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_operator_cost">cpu_operator_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cpu_tuple_cost">cpu_tuple_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#cursor_tuple_fraction">cursor_tuple_fraction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#custom_variable_classes">custom_variable_classes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#DateStyle">DateStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#db_user_namespace">db_user_namespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#deadlock_timeout">deadlock_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_assertions">debug_assertions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_pretty_print">debug_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_parse">debug_print_parse</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_plan">debug_print_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_prelim_plan">debug_print_prelim_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_rewritten">debug_print_rewritten</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#debug_print_slice_table">debug_print_slice_table</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_statistics_target">default_statistics_target</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_tablespace">default_tablespace</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_transaction_isolation">default_transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#default_transaction_read_only">default_transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#dynamic_library_path">dynamic_library_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#effective_cache_size">effective_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_bitmapscan">enable_bitmapscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_groupagg">enable_groupagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_hashagg">enable_hashagg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_hashjoin">enable_hashjoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_indexscan">enable_indexscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_mergejoin">enable_mergejoin</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_nestloop">enable_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_seqscan">enable_seqscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_sort">enable_sort</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#enable_tidscan">enable_tidscan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#escape_string_warning">escape_string_warning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#explain_pretty_print">explain_pretty_print</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#extra_float_digits">extra_float_digits</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#filerep_mirrorvalidation_during_resync">filerep_mirrorvalidation_during_resync</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#from_collapse_limit">from_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_adjust_selectivity_for_outerjoins">gp_adjust_selectivity_for_outerjoins</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_analyze_relative_error">gp_analyze_relative_error</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_appendonly_compaction">gp_appendonly_compaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_appendonly_compaction_threshold">gp_appendonly_compaction_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_mode">gp_autostats_mode</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_mode_in_functions">gp_autostats_mode_in_functions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_autostats_on_change_threshold">gp_autostats_on_change_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_backup_directIO">gp_backup_directIO</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_backup_directIO_read_chunk_mb">gp_backup_directIO_read_chunk_mb</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_cached_segworkers_threshold">gp_cached_segworkers_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_command_count">gp_command_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_connection_send_timeout">gp_connection_send_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_connections_per_thread">gp_connections_per_thread</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_content">gp_content</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_create_table_random_default_distribution">gp_create_table_random_default_distribution</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_dbid">gp_dbid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_debug_linger">gp_debug_linger</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_default_storage_options">gp_default_storage_options</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_dynamic_partition_pruning">gp_dynamic_partition_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_from">gp_email_from</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_password">gp_email_smtp_password</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_server">gp_email_smtp_server</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_smtp_userid">gp_email_smtp_userid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_email_to">gp_email_to</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_adaptive_nestloop">gp_enable_adaptive_nestloop</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct">gp_enable_agg_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_agg_distinct_pruning">gp_enable_agg_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_direct_dispatch">gp_enable_direct_dispatch</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_exchange_default_partition">gp_enable_exchange_default_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_fallback_plan">gp_enable_fallback_plan</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_fast_sri">gp_enable_fast_sri</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_gpperfmon">gp_enable_gpperfmon</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_gather">gp_enable_groupext_distinct_gather</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_groupext_distinct_pruning">gp_enable_groupext_distinct_pruning</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_multiphase_agg">gp_enable_multiphase_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_predicate_propagation">gp_enable_predicate_propagation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_preunique">gp_enable_preunique</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_relsize_collection">gp_enable_relsize_collection</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sequential_window_plans">gp_enable_sequential_window_plans</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sort_distinct">gp_enable_sort_distinct</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_enable_sort_limit">gp_enable_sort_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_external_enable_exec">gp_external_enable_exec</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_external_max_segs">gp_external_max_segs</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_count">gp_filerep_tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_idle">gp_filerep_tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_filerep_tcp_keepalives_interval">gp_filerep_tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_interval">gp_fts_probe_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_retries">gp_fts_probe_retries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_threadcount">gp_fts_probe_threadcount</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_fts_probe_timeout">gp_fts_probe_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_gpperfmon_send_interval">gp_gpperfmon_send_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gpperfmon_log_alert_level">gpperfmon_log_alert_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hadoop_home">gp_hadoop_home</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hadoop_target_version">gp_hadoop_target_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_hashjoin_tuples_per_bucket">gp_hashjoin_tuples_per_bucket</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_idf_deduplicate">gp_idf_deduplicate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#topic_lvm_ttc_3p">gp_initial_bad_row_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_fc_method">gp_interconnect_fc_method</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_hash_multiplier">gp_interconnect_hash_multiplier</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_queue_depth">gp_interconnect_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_setup_timeout">gp_interconnect_setup_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_snd_queue_depth">gp_interconnect_snd_queue_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_interconnect_type">gp_interconnect_type</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_format">gp_log_format</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_fts">gp_log_fts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_log_gang">gp_log_gang</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_csv_line_length">gp_max_csv_line_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_databases">gp_max_databases</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_filespaces">gp_max_filespaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_local_distributed_cache">gp_max_local_distributed_cache</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_packet_size">gp_max_packet_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_plan_size">gp_max_plan_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_max_tablespaces">gp_max_tablespaces</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_motion_cost_per_row">gp_motion_cost_per_row</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_num_contents_in_cluster">gp_num_contents_in_cluster</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_reject_percent_threshold">gp_reject_percent_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_reraise_signal">gp_reraise_signal</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_memory_policy">gp_resqueue_memory_policy</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority">gp_resqueue_priority</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority_cpucores_per_segment">gp_resqueue_priority_cpucores_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_resqueue_priority_sweeper_interval">gp_resqueue_priority_sweeper_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_role">gp_role</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_safefswritesize">gp_safefswritesize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_segment_connect_timeout">gp_segment_connect_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_segments_for_planner">gp_segments_for_planner</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_server_version">gp_server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_server_version_num">gp_server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_session_id">gp_session_id</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_set_proc_affinity">gp_set_proc_affinity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_set_read_only">gp_set_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_community">gp_snmp_community</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_monitor_address">gp_snmp_monitor_address</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_snmp_use_inform_or_trap">gp_snmp_use_inform_or_trap</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_statistics_pullup_from_child_partition">gp_statistics_pullup_from_child_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_statistics_use_fkeys">gp_statistics_use_fkeys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_idle_resource_timeout">gp_vmem_idle_resource_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_protect_limit">gp_vmem_protect_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_vmem_protect_segworker_cache_limit">gp_vmem_protect_segworker_cache_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_checksumming">gp_workfile_checksumming</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_compress_algorithm">gp_workfile_compress_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_files_per_query">gp_workfile_limit_files_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_query">gp_workfile_limit_per_query</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gp_workfile_limit_per_segment">gp_workfile_limit_per_segment</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#gpperfmon_port">gpperfmon_port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#integer_datetimes">integer_datetimes</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#IntervalStyle">IntervalStyle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#join_collapse_limit">join_collapse_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#keep_wal_segments">keep_wal_segments</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_caseins_users">krb_caseins_users</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_server_keyfile">krb_server_keyfile</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#krb_srvname">krb_srvname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_collate">lc_collate</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_ctype">lc_ctype</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_messages">lc_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_monetary">lc_monetary</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_numeric">lc_numeric</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#lc_time">lc_time</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#listen_addresses">listen_addresses</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#local_preload_libraries">local_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_autostats">log_autostats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_connections">log_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_disconnections">log_disconnections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_dispatch_stats">log_dispatch_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_duration">log_duration</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_error_verbosity">log_error_verbosity</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_executor_stats">log_executor_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_hostname">log_hostname</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_duration_statement">log_min_duration_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_error_statement">log_min_error_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_min_messages">log_min_messages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_parser_stats">log_parser_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_planner_stats">log_planner_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_rotation_age">log_rotation_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_rotation_size">log_rotation_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_statement">log_statement</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_statement_stats">log_statement_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_timezone">log_timezone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#log_truncate_on_rotation">log_truncate_on_rotation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_appendonly_tables">max_appendonly_tables</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_connections">max_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_files_per_process">max_files_per_process</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_fsm_pages">max_fsm_pages</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_fsm_relations">max_fsm_relations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_function_args">max_function_args</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_identifier_length">max_identifier_length</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_index_keys">max_index_keys</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_locks_per_transaction">max_locks_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_prepared_transactions">max_prepared_transactions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_resource_portals_per_transaction">max_resource_portals_per_transaction</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_resource_queues">max_resource_queues</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_stack_depth">max_stack_depth</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#max_statement_mem">max_statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer">optimizer</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_array_expansion_threshold">optimizer_array_expansion_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_analyze_root_partition">optimizer_analyze_root_partition</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_control">optimizer_control</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_cte_inlining_bound">optimizer_cte_inlining_bound</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_enable_master_only_queries">optimizer_enable_master_only_queries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_force_multistage_agg">optimizer_force_multistage_agg</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_force_three_stage_scalar_dqa">optimizer_force_three_stage_scalar_dqa</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_join_order_threshold">optimizer_join_order_threshold</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_mdcache_size">optimizer_mdcache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_metadata_caching">optimizer_metadata_caching</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_minidump">optimizer_minidump</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_nestloop_factor">optimizer_nestloop_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_parallel_union">optimizer_parallel_union</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_print_missing_stats">optimizer_print_missing_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_print_optimization_stats">optimizer_print_optimization_stats</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#optimizer_sort_factor">optimizer_sort_factor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#password_encryption">password_encryption</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#password_hash_algorithm">password_hash_algorithm</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pgstat_track_activity_query_size">pgstat_track_activity_query_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_classpath">pljava_classpath</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_classpath_insecure">pljava_classpath_insecure</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_statement_cache_size">pljava_statement_cache_size</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_release_lingering_savepoints">pljava_release_lingering_savepoints</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#pljava_vmoptions">pljava_vmoptions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#port">port</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#random_page_cost">random_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#readable_external_table_timeout">readable_external_table_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#repl_catchup_within_range">repl_catchup_within_range</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#replication_timeout">replication_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#regex_flavor">regex_flavor</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#resource_cleanup_gangs_on_wait">resource_cleanup_gangs_on_wait</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#resource_select_only">resource_select_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#runaway_detector_activation_percent">runaway_detector_activation_percent</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#search_path">search_path</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#seq_page_cost">seq_page_cost</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_encoding">server_encoding</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_version">server_version</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#server_version_num">server_version_num</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#shared_buffers">shared_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#shared_preload_libraries">shared_preload_libraries</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#ssl">ssl</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#ssl_ciphers">ssl_ciphers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#standard_conforming_strings">standard_conforming_strings</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#statement_mem">statement_mem</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#statement_timeout">statement_timeout</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#stats_queue_level">stats_queue_level</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#superuser_reserved_connections">superuser_reserved_connections</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_count">tcp_keepalives_count</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_idle">tcp_keepalives_idle</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#tcp_keepalives_interval">tcp_keepalives_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#temp_buffers">temp_buffers</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#TimeZone">TimeZone</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#timezone_abbreviations">timezone_abbreviations</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#track_activities">track_activities</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#track_counts">track_counts</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transaction_isolation">transaction_isolation</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transaction_read_only">transaction_read_only</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#transform_null_equals">transform_null_equals</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_directory">unix_socket_directory</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_group">unix_socket_group</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#unix_socket_permissions">unix_socket_permissions</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#update_process_title">update_process_title</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_delay">vacuum_cost_delay</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_limit">vacuum_cost_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_dirty">vacuum_cost_page_dirty</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_hit">vacuum_cost_page_hit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_cost_page_miss">vacuum_cost_page_miss</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vacuum_freeze_min_age">vacuum_freeze_min_age</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#validate_previous_free_tid">validate_previous_free_tid</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#vmem_process_interrupt">vmem_process_interrupt</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#wal_receiver_status_interval">wal_receiver_status_interval</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#writable_external_table_bufsize">writable_external_table_bufsize</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#xid_stop_limit">xid_stop_limit</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/config_params/guc-list.html#xid_warn_limit">xid_warn_limit</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/function-summary.html">内建函数摘要</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/yaml_spec.html">Greenplum MapReduce规范</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_sql.html">Greenplum的PL&#x2F;pgSQL过程语言</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_r.html">Greenplum的PL&#x2F;R语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_python.html">Greenplum的PL&#x2F;Python语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_java.html">Greenplum的PL&#x2F;Java语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/pl_perl.html">Greenplum的PL&#x2F;Perl语言扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/madlib.html">用于分析的Greenplum MADlib扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/extensions/fuzzystrmatch.html">Greenplum的模糊字符串匹配扩展</a>
+        
+
+      </li>
+    
+      <li class="">
+        <a href="/docs/ref_guide/feature_summary.html">Greenplum特性摘要</a>
+        
+
+      </li>
+    
+  </ul>
+
+
+      </li>
+    
+  </ul>
+
+
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container" style="display: none;">
+    Oracle兼容性函数
+  </h1>
+
+          <div id="js-quick-links" >
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        
+
+  <h1 class="title topictitle1">Oracle兼容性函数</h1>
+
+  <div class="body">
+    <p class="p">本参考描述了Greenplum数据库中的Oracle兼容性SQL函数。这些函数的目标本是PostgreSQL。</p>
+
+  </div>
+
+  <div class="related-links">
+<div class="familylinks">
+<div class="parentlink">
+<strong>上级主题：</strong> <a class="link" href="../utility_guide/utility_guide.html" title="命令行工具、客户端程序和Oracle兼容性功能的参考信息。">Greenplum数据库工具指南</a>
+</div>
+</div>
+</div>
+<div class="topic nested1" xml:lang="en" lang="en" id="topic2">
+    <h2 class="title topictitle2">安装Oracle兼容性函数</h2>
+
+    <div class="body">
+      <p class="p">在使用任何Oracle兼容性函数之前，要对每个数据库运行一次安装脚本<samp class="ph codeph">$GPHOME/share/postgresql/contrib/orafunc.sql</samp>。例如，要在数据库<samp class="ph codeph">testdb</samp>中安装这些函数，应使用下列命令：</p>
+
+      <pre class="pre codeblock">$ psql -d testdb -f $GPHOME/share/postgresql/contrib/orafunc.sql</pre>
+
+      <p class="p">要卸载Oracle兼容性函数，可运行<samp class="ph codeph">uinstall_orafunc.sql</samp>脚本：</p>
+
+      <div class="p">
+        <pre class="pre codeblock">$GPHOME/share/postgresql/contrib/uninstall_orafunc.sql</pre>
+
+      </div>
+
+      <p class="p">下列函数默认就可用而不需要运行Oracle兼容性的安装器：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic2__me155309"><samp class="ph codeph"><a class="xref" href="#topic28">sinh</a></samp></li>
+
+        <li class="li" id="topic2__me155326"><samp class="ph codeph"><a class="xref" href="#topic29">tanh</a></samp></li>
+
+        <li class="li" id="topic2__me155333"><samp class="ph codeph"><a class="xref" href="#topic8">cosh</a></samp></li>
+
+        <li class="li" id="topic2__me155319"><samp class="ph codeph"><a class="xref" href="#topic9">decode</a></samp></li>
+
+      </ul>
+
+      <div class="note note">
+<span class="notetitle">注意：</span>Oracle兼容性函数位于<samp class="ph codeph">oracompat</samp>方案中。要访问它们，应该在前面加上方案名（<samp class="ph codeph">oracompat</samp>）或者修改数据库搜索路径以包括该方案名。例如：
+<pre class="pre codeblock">ALTER DATABASE <var class="keyword varname">db_name</var> SET <var class="keyword varname">search_path</var> = $<var class="keyword varname">user</var>, public, oracompat; </pre>
+<p class="p">如果用户更改了数据库搜索路径，就必须重启数据库。</p>
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic3">
+    <h2 class="title topictitle2">Oracle和Greenplum的实现差异</h2>
+
+    <div class="body">
+      <p class="p">这些兼容性函数在Greenplum数据库中的实现和Oracle的实现有一些不同。如果用户使用验证脚本，其输出可能不会与Oracle的完全相同。下面是其中一些差异：</p>
+
+      <ul class="ul">
+        <li class="li" id="topic3__me144138">Oracle会执行小数舍入，而Greenplum数据库不会：<ul class="ul" id="topic3__ul_yt5_bz1_1p">
+            <li class="li">在Oracle中2.00会变成2。</li>
+
+            <li class="li">在Greenplum数据库中2.0.0仍是2.00。</li>
+
+          </ul>
+</li>
+
+        <li class="li" id="topic3__me144139">所提供的Oracle兼容性函数以不同的方式处理隐式类型转换。例如，使用<samp class="ph codeph">decode</samp>函数：
+          <pre class="pre codeblock">decode(<var class="keyword varname">expression</var>, <var class="keyword varname">value</var>, <var class="keyword varname">return</var> [,<var class="keyword varname">value</var>, <var class="keyword varname">return</var>]...
+            [, default])</pre>
+<p class="p">在比较之前，Oracle会自动把<var class="keyword varname">expression</var>和每一个<var class="keyword varname">value</var>转换为第一个<var class="keyword varname">value</var>的数据类型。Oracle会自动把<var class="keyword varname">return</var>转换为和第一个结果相同的数据类型。</p>
+<p class="p">Greenplum实现限制<var class="keyword varname">return</var>和<samp class="ph codeph">default</samp>为同一种数据类型。如果<var class="keyword varname">value</var>的数据类型能被转换成<var class="keyword varname">expression</var>的数据类型，<var class="keyword varname">expression</var>和<var class="keyword varname">value</var>可以是不同的类型。这会被隐式完成。否则，<samp class="ph codeph">decode</samp>会失败，并且报出一个<samp class="ph codeph">invalid input syntax</samp>错误。例如：</p>
+<pre class="pre codeblock">SELECT decode('M',true,false);
+CASE
+------
+ f
+(1 row)
+SELECT decode(1,'M',true,false);
+ERROR: Invalid input syntax for integer:<em class="ph i">"M" 
+</em>LINE 1: SELECT decode(1,'M',true,false);</pre>
+</li>
+
+        <li class="li" id="topic3__me144144">Oracle中<samp class="ph codeph">bigint</samp>格式的数字会被显示为科学记数法，在Greenplum数据库中则不会：
+          <ul class="ul" id="topic3__ul_cld_kz1_1p">
+            <li class="li">Oracle中9223372036854775显示为9.2234E+15。</li>
+
+            <li class="li">Greenplum数据库中9223372036854775仍为9223372036854775。</li>
+
+          </ul>
+</li>
+
+        <li class="li" id="topic3__me144146">Oracle中默认的日期和时间戳格式与Greenplum中的默认格式不同。如果执行下列代码：
+          <pre class="pre codeblock">CREATE TABLE TEST(date1 date, time1 timestamp, time2 
+                  timestamp with timezone);
+INSERT INTO TEST VALUES ('2001-11-11','2001-12-13 
+                 01:51:15','2001-12-13 01:51:15 -08:00');
+SELECT DECODE(date1, '2001-11-11', '2001-01-01') FROM TEST;</pre>
+<p class="p">Greenplum数据库会返回该行，但Oracle不会返回任何行。</p>
+<div class="note note">
+<span class="notetitle">注意：</span>Oracle中能返回该行的正确语法是：<pre class="pre codeblock">SELECT DECODE(to_char(date1, 'YYYY-MM-DD'), '2001-11-11', 
+              '2001-01-01') FROM TEST</pre>
+</div>
+</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic4">
+    <h2 class="title topictitle2">Oracle兼容性函数参考</h2>
+
+    <div class="body">
+      <p class="p">下面是Oracle兼容性函数。</p>
+
+      <table cellpadding="4" cellspacing="0" summary="" id="topic4__me155958" border="1" class="simpletable">
+<tr class="strow">
+          <td valign="top" class="stentry">
+            <p class="p"><a class="xref" href="#topic5">add_months</a></p>
+
+            <p class="p"><a class="xref" href="#topic6">bitand</a></p>
+
+            <p class="p"><a class="xref" href="#topic7">concat</a></p>
+
+            <p class="p"><a class="xref" href="#topic8">cosh</a></p>
+
+            <p class="p"><a class="xref" href="#topic9">decode</a></p>
+
+            <p class="p"><a class="xref" href="#topic12">dump</a></p>
+
+            <p class="p"><a class="xref" href="#topic13">instr</a></p>
+
+            <p class="p"><a class="xref" href="#topic14">last_day</a></p>
+
+            <p class="p"><a class="xref" href="#topic15">listagg</a></p>
+
+            <p class="p"><a class="xref" href="#topic16">listagg (2)</a></p>
+
+            <p class="p"><a class="xref" href="#topic17">lnnvl</a></p>
+
+            <p class="p"><a class="xref" href="#topic18">months_between</a></p>
+
+          </td>
+
+          <td valign="top" class="stentry">
+            <p class="p"><a class="xref" href="#topic19">nanvl</a></p>
+
+            <p class="p"><a class="xref" href="#topic20">next_day</a></p>
+
+            <p class="p"><a class="xref" href="#topic21">next_day (2)</a></p>
+
+            <p class="p"><a class="xref" href="#topic22">nlssort</a></p>
+
+            <p class="p"><a class="xref" href="#topic23">nvl</a></p>
+
+            <p class="p"><a class="xref" href="#topic24">nvl2</a></p>
+
+            <p class="p"><a class="xref" href="#topic25">oracle.substr</a></p>
+
+            <p class="p"><a class="xref" href="#topic26">reverse</a></p>
+
+            <p class="p"><a class="xref" href="#topic27">round</a></p>
+
+            <p class="p"><a class="xref" href="#topic28">sinh</a></p>
+
+            <p class="p"><a class="xref" href="#topic29">tanh</a></p>
+
+            <p class="p"><a class="xref" href="#topic30">trunc</a></p>
+
+          </td>
+
+        </tr>
+</table>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic5">
+    <h2 class="title topictitle2">add_months</h2>
+
+    <div class="body">
+      <p class="p">把给定的月数加到一个给定日期的Oracle兼容函数。</p>
+
+      <div class="section" id="topic5__me146666">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">add_months(<var class="keyword varname">date_expression</var>, <var class="keyword varname">months_to_add</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数把<var class="keyword varname">months_to_add</var>加到一个
+            <var class="keyword varname">date_expression</var>之上，并且返回一个<samp class="ph codeph">DATE</samp>。</p>
+
+        <p class="p">如果<var class="keyword varname">date_expression</var>指定的是当月的最后一天，或者如果结果月份的天数少于<var class="keyword varname">date_expression</var>，那么返回值会是结果月份的最后一天。否则，<var class="keyword varname">date_expression</var>是所在月份的几号，返回值也是其所在月份的几号。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_expression</var></dt>
+
+            <dd class="dd pd">开始日期。这可以是任何能被隐式转换成<samp class="ph codeph">DATE</samp>的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">months_to_add</var></dt>
+
+            <dd class="dd pd">要加到<var class="keyword varname">date_expression</var>上的月数。这是一个整数或者任何能被隐式转换为整数的值。这个参数可以是正值或负值。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT name, phone, nextcalldate FROM clientdb
+WHERE nextcalldate &gt;= add_months(CURRENT_DATE,6);</pre>
+
+        <p class="p">为所有<samp class="ph codeph">nextcalldate</samp>是未来至少六个月之后的记录返回 <samp class="ph codeph">name</samp>、<samp class="ph codeph">phone</samp>和<samp class="ph codeph">nextcalldate</samp>。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic6">
+    <h2 class="title topictitle2">bitand</h2>
+
+    <div class="body">
+      <p class="p">在两个非负值的二进制位上计算一个逻辑<samp class="ph codeph">AND</samp>操作的Oracle兼容函数。</p>
+
+      <div class="section" id="topic6__me146711">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">bitand(<var class="keyword varname">expr1</var>, <var class="keyword varname">expr2</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回一个整数，它表示两个非负值（<var class="keyword varname">expr1</var>和
+            <var class="keyword varname">expr2</var>）的二进制位上的一次<samp class="ph codeph">AND</samp>操作。当两个值相同时返回1。当两个值不同时返回0。这个函数只比较有效位。例如，在整数5（二进制101）和1（二进制001或1）上的<samp class="ph codeph">AND</samp>操作只比较最右边的位，并且产生的结果值为1（二进制1）。</p>
+
+        <p class="p"> <var class="keyword varname">expr1</var>和<var class="keyword varname">expr2</var>的类型是<samp class="ph codeph">NUMBER</samp>，而结果的类型是<samp class="ph codeph">NUMBER</samp>。只要有一个参数是<samp class="ph codeph">NULL</samp>，结果就是<samp class="ph codeph">NULL</samp>。</p>
+
+        <p class="p">参数必须处于范围<samp class="ph codeph">-(2(n-1)) .. ((2(n-1))-1)</samp>中。如果一个参数超过这个范围，结果就是undefined。</p>
+
+        <div class="note note">
+<span class="notetitle">注意：</span> 
+          <ul class="ul" id="topic6__ul_sgq_jcm_44">
+            <li class="li" id="topic6__me146722">
+                <samp class="ph codeph">BITAND</samp>的当前实现定义 n = 128。</li>
+
+            <li class="li" id="topic6__me146723">PL/SQL支持一种
+                <samp class="ph codeph">BITAND</samp>的重载，其输入和结果的类型都是
+                <samp class="ph codeph">BINARY_INTEGER</samp>并且 n = 32。</li>
+
+          </ul>
+
+        </div>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expr1</var></dt>
+
+            <dd class="dd pd">一个非负整数表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expr2</var></dt>
+
+            <dd class="dd pd">一个非负整数表达式。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT bitand(<var class="keyword varname">expr1</var>, <var class="keyword varname">expr2</var>)
+FROM ClientDB;</pre>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic7">
+    <h2 class="title topictitle2">concat</h2>
+
+    <div class="body">
+      <p class="p">串接两个字符串在一起的Oracle兼容函数。</p>
+
+      <div class="section" id="topic7__me146874">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">concat (<var class="keyword varname">string1</var>, <var class="keyword varname">string2</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数把两个字符串（<var class="keyword varname">string1</var>和
+            <var class="keyword varname">string2</var>）串接在一起。</p>
+
+        <p class="p">返回的字符串具有和<var class="keyword varname">string1</var>相同的字符集。其数据类型取决于参数的数据类型。</p>
+
+        <p class="p">在两种不同数据类型的串接中，返回的数据类型是其中能够得到无损转换的那一种。因此，如果一个参数是
+          <samp class="ph codeph">LOB</samp>，那么返回值也是<samp class="ph codeph">LOB</samp>。如果一个参数是一种国家的数据类型，那么返回值也是一种国家的数据类型。例如：</p>
+
+        <pre class="pre codeblock">concat(CLOB, NCLOB) returns NCLOB
+concat(NCLOB, NCHAR) returns NCLOB
+concat(NCLOB, CHAR) returns NCLOB
+concat(NCHAR, CLOB) returns NCLOB</pre>
+
+        <p class="p">这个函数等效于串接操作符（<samp class="ph codeph">||</samp>）。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">
+<var class="keyword varname">string1</var>/<var class="keyword varname">string2</var>
+</dt>
+
+            <dd class="dd pd">两个要串接在一起的字符串。</dd>
+
+            <dd class="dd pd"><var class="keyword varname">string1</var>和<var class="keyword varname">string2</var>都可以是数据类型<samp class="ph codeph">CHAR</samp>、<samp class="ph codeph">VARCHAR2</samp>、<samp class="ph codeph">NCHAR</samp>、<samp class="ph codeph">NVARCHAR2</samp>、<samp class="ph codeph">CLOB</samp>或<samp class="ph codeph">NCLOB</samp>中的任意一种。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT concat(concat(last_name, '''s job category is '),
+     job_id)
+FROM employees </pre>
+
+        <p class="p">返回 <samp class="ph codeph">'Smith's job category is 4B'</samp></p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic8">
+    <h2 class="title topictitle2">cosh </h2>
+
+    <div class="body">
+      <p class="p">返回一个给定数字的双曲余弦的Oracle兼容函数。</p>
+
+      <div class="section" id="topic8__me146951">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">cosh(<var class="keyword varname">float8</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回输入的8位浮点数（<var class="keyword varname">float8</var>）的双曲余弦值。</p>
+
+        <div class="note note">
+<span class="notetitle">注意：</span> 
+          <p class="p">这个函数默认就可用，不需要运行Oracle兼容性安装器就能访问这个函数。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">float8</var></dt>
+
+            <dd class="dd pd">输入的数字</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT cosh(0.2)
+FROM ClientDB;</pre>
+
+        <p class="p">返回 <samp class="ph codeph">'1.02006675561908'</samp>' （0.2的双曲余弦值）</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic9">
+    <h2 class="title topictitle2">decode</h2>
+
+    <div class="body">
+      <p class="p">把一个数据值转换成指定返回值的Oracle兼容函数。这个函数是实现一组<samp class="ph codeph">CASE</samp>语句的一种方式。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> <samp class="ph codeph">decode</samp>会被转换成一个Greenplum数据库中的保留字。如果用户想使用Postgres的两个参数的<samp class="ph codeph">decode</samp>函数来编码之前编码为只有ASCII表达形式的二进制串，用户必须用完整带方案限定的语法调用它，即<samp class="ph codeph">pg_catalog.decode()</samp>，或者把函数名包括在引号中<samp class="ph codeph">"decode" ()</samp>。</div>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> Greenplum对这个函数的实现把<samp class="ph codeph">decode</samp>转换为<samp class="ph codeph">case</samp>。<p class="p">这会产生下列类型的输出：</p>
+<pre class="pre codeblock">gptest=# select decode(a, 1, 'A', 2, 'B', 'C') from 
+decodetest;
+ case 
+------
+ C
+ A
+ C
+ B
+ C
+(5 rows)</pre>
+<p class="p">这也意味着如果用户用<samp class="ph codeph">decode</samp>翻译用户的视角，用户将看到<samp class="ph codeph">case</samp>表达式。</p>
+</div>
+
+      <p class="p">用户应该用<samp class="ph codeph">case</samp>函数取代<samp class="ph codeph">decode</samp>。</p>
+
+      <div class="section" id="topic9__me154380">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">decode(<var class="keyword varname">expression</var>, <var class="keyword varname">value</var>, <var class="keyword varname">return</var> [,<var class="keyword varname">value</var>, <var class="keyword varname">return</var>]...
+       [, default])</pre>
+
+        
+        <p class="p">这个Oracle兼容函数decode会在一个表达式中搜索值。如果该值被找到，该函数会返回指定的值。</p>
+
+        <div class="note note">
+<span class="notetitle">注意：</span> 
+          <p class="p">这个函数默认就可用，不需要运行Oracle兼容性安装器就能访问这个函数。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expression</var></dt>
+
+            <dd class="dd pd">要搜索的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">value</var></dt>
+
+            <dd class="dd pd">要在表达式中寻找的值。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">return</var></dt>
+
+            <dd class="dd pd">如果表达式匹配值应该返回什么。</dd>
+
+          
+          
+            <dt class="dt pt dlterm">default</dt>
+
+            <dd class="dd pd">如果表达式不匹配任何值应该返回什么。</dd>
+
+          
+        </dl>
+
+        <p class="p">只有一个<samp class="ph codeph">expression</samp>被传递给该函数。可以传递多个
+          <samp class="ph codeph">value</samp>/<samp class="ph codeph">return</samp>对。</p>
+
+        <p class="p"><samp class="ph codeph">default</samp>参数是可选的。如果没有指定
+            <samp class="ph codeph">default</samp>并且如果<samp class="ph codeph">expression</samp>不匹配任何传入的
+            <samp class="ph codeph">value</samp>参数，decode会返回
+            <samp class="ph codeph">null</samp>。Greenplum实现限制<samp class="ph codeph">return</samp>和<samp class="ph codeph">default</samp>要是相同的数据类型。如果<samp class="ph codeph">value</samp>的数据类型能被转换成<samp class="ph codeph">expression</samp>的数据类型，
+            <samp class="ph codeph">expression</samp>和<samp class="ph codeph">value</samp>可以是不同的类型。这种转换会被隐式完成。否则，<samp class="ph codeph">decode</samp>会出现一个<samp class="ph codeph">invalid input syntax</samp>错误而失败。</p>
+
+        
+        <p class="p">在下面的代码中，<samp class="ph codeph">decode</samp>为<samp class="ph codeph">company_id</samp>搜索一个值并且为那个公司返回一个指定的值。如果<samp class="ph codeph">company_id</samp>不是列出的值之一，会为它返回默认值<samp class="ph codeph">Other</samp>。</p>
+
+        <pre class="pre codeblock">SELECT decode(company_id, 1, 'EMC',
+                          2, 'Greenplum',
+                          'Other')
+FROM suppliers;</pre>
+
+        <p class="p">下列代码使用<samp class="ph codeph">CASE</samp>语句来产生和使用<samp class="ph codeph">decode</samp>的例子相同的结果。</p>
+
+        <pre class="pre codeblock">SELECT CASE company_id
+WHEN IS NOT DISTINCT FROM 1 THEN 'EMC'
+WHEN IS NOT DISTINCT FROM 2 THEN 'Greenplum'
+ELSE 'Other'
+END
+FROM suppliers;</pre>
+
+        
+        <p class="p">要把一个范围的值分配到一个单一返回值，要么传递该范围中每个值的表达式，要么传递对该范围中所有值都同样计算的表达式。例如，如果一个会计年度从8月1日开始，下表中显示了会计季度。</p>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic9__me144277" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">表 1. 从8月1日开始的会计年度的月和季度</span></caption>
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="126pt" id="d484003e1088">范围（字母）</th>
+
+                <th class="entry" valign="top" width="110pt" id="d484003e1091">范围（数字）</th>
+
+                <th class="entry" valign="top" width="126pt" id="d484003e1094">季度</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="126pt" headers="d484003e1088 ">8月 — 10月</td>
+
+                <td class="entry" valign="top" width="110pt" headers="d484003e1091 ">8 — 10</td>
+
+                <td class="entry" valign="top" width="126pt" headers="d484003e1094 ">Q1</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="126pt" headers="d484003e1088 ">11月 — 1月</td>
+
+                <td class="entry" valign="top" width="110pt" headers="d484003e1091 ">11 — 1</td>
+
+                <td class="entry" valign="top" width="126pt" headers="d484003e1094 ">Q2</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="126pt" headers="d484003e1088 ">2月 — 4月</td>
+
+                <td class="entry" valign="top" width="110pt" headers="d484003e1091 ">2 — 4</td>
+
+                <td class="entry" valign="top" width="126pt" headers="d484003e1094 ">Q3</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="126pt" headers="d484003e1088 ">5月 — 7月</td>
+
+                <td class="entry" valign="top" width="110pt" headers="d484003e1091 ">5 — 7</td>
+
+                <td class="entry" valign="top" width="126pt" headers="d484003e1094 ">Q4</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+        <div class="p">该表包含一个数字域<samp class="ph codeph">curr_month</samp>，它保存这一个月份的数字值1 – 12。有两种方式使用<samp class="ph codeph">decode</samp>来得到季度：<ul class="ul" id="topic9__ul_lrt_j4j_bp">
+            <li class="li">方法 1 - 在<samp class="ph codeph">decode</samp>函数中包括12个值：<pre class="pre codeblock">SELECT decode(curr_month, 1, 'Q2',
+                          2, 'Q3',
+                          3, 'Q3',
+                          4, 'Q3',
+                          5, 'Q4',
+                          6, 'Q4',
+                          7, 'Q4',
+                          8, 'Q1',
+                          9, 'Q1',
+                         10, 'Q1',
+                         11, 'Q2',
+                         12, 'Q2')
+FROM suppliers;</pre>
+</li>
+
+          </ul>
+<ul class="ul" id="topic9__ul_wbp_44j_bp">
+            <li class="li">方法 2 - 对decode使用一个定义一个唯一值的表达式：<pre class="pre codeblock">SELECT decode((1+MOD(curr_month+4,12)/3)::int, 1, 'Q1',
+                                               2, 'Q2',
+                                               3, 'Q3',
+                                               4, 'Q4',
+FROM suppliers;</pre>
+</li>
+
+          </ul>
+</div>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+        
+        <p class="p">PostgreSQL <samp class="ph codeph"><a class="xref" href="https://www.postgresql.org/docs/8.3/static/functions-binarystring.html" target="_blank">decode</a></samp>（与Oracle不兼容）</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic12">
+    <h2 class="title topictitle2">dump</h2>
+
+    <div class="body">
+      <p class="p">返回一个文本值的Oracle兼容函数，该文本值包括该表达式的数据类型代码、以字节计的长度和内部表示。</p>
+
+      <div class="section" id="topic12__me152601">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">dump(<var class="keyword varname">expression</var> [,<var class="keyword varname">integer</var>]) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回一个文本值，该文本值包括该表达式的数据类型代码、以字节计的长度和内部表示。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expression</var></dt>
+
+            <dd class="dd pd">任意表达式</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">integer</var></dt>
+
+            <dd class="dd pd">返回的字符数</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">dump('Tech') returns 'Typ=96 Len=4: 84,101,99,104'
+
+dump ('tech') returns 'Typ-96 Len=4: 84,101,99,104'
+
+dump('Tech', 10) returns 'Typ=96 Len=4: 84,101,99,104'
+
+dump('Tech', 16) returns 'Typ=96 Len=4: 54,65,63,68'
+
+dump('Tech', 1016) returns 'Typ=96 Len=4 CharacterSet=US7ASCII:     54,65,63,68'
+
+dump('Tech', 1017) returns 'Typ=96 Len=4 CharacterSet=US7ASCII:     T,e,c,h'</pre>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic13">
+    <h2 class="title topictitle2">instr</h2>
+
+    <div class="body">
+      <p class="p">返回一个子串在串中位置的Oracle兼容函数。</p>
+
+      <div class="section" id="topic13__me149267">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">instr(<var class="keyword varname">string</var>, <var class="keyword varname">substring</var>, [<var class="keyword varname">position</var>[,<var class="keyword varname">occurrence</var>]])</pre>
+
+        
+        <p class="p">这个Oracle兼容函数在一个<var class="keyword varname">string</var>中搜索一个<var class="keyword varname">substring</var>。如果找到，它返回指示<var class="keyword varname">substring</var>在<var class="keyword varname">string</var>中位置的整数；如果没有找到，该函数返回0。</p>
+
+        <p class="p">可选地，可以指定搜索从字符串中给定的<var class="keyword varname">position</var>开始，并且只返回<var class="keyword varname">substring</var>在<var class="keyword varname">string</var>中的第<var class="keyword varname">occurrence</var>次出现。 </p>
+
+        <p class="p"><samp class="ph codeph">instr </samp>使用输入字符集定义的字符计算字符串。</p>
+
+        <p class="p">被返回的值是<samp class="ph codeph">NUMBER</samp>数据类型。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">string</var></dt>
+
+            <dd class="dd pd">要搜索的串。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">substring</var></dt>
+
+            <dd class="dd pd">要在<var class="keyword varname">string</var>中搜索的字符串。</dd>
+
+            <dd class="dd pd"><var class="keyword varname">string</var>和<var class="keyword varname">substring</var>都可以是数据类型<samp class="ph codeph">CHAR</samp>、<samp class="ph codeph">VARCHAR2</samp>、<samp class="ph codeph">NCHAR</samp>、<samp class="ph codeph">NVARCHAR2</samp>、<samp class="ph codeph">CLOB</samp>或者<samp class="ph codeph">NCLOB</samp>中的任何一种。 </dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">position</var></dt>
+
+            <dd class="dd pd">position是一个非零整数，它表示<var class="keyword varname">string</var>中的一个位置，搜索将从这个位置开始。如果没有指定，默认为1。如果这个值为负，该函数会从<var class="keyword varname">string</var>的末尾倒着数position的绝对值个位置，然后搜索会从数到的位置开始。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">occurrence</var></dt>
+
+            <dd class="dd pd">occurrence是一个整数，它表示应该搜索<var class="keyword varname">substring</var>的第几次出现。occurrence的值必须为正。 </dd>
+
+            <dd class="dd pd"><var class="keyword varname">position</var>和<var class="keyword varname">occurrence</var>都必须是数据类型<samp class="ph codeph">NUMBER</samp>或者任何可被隐式转换为<samp class="ph codeph">NUMBER</samp>的数据类型，并且必须被解析成一个整数。<var class="keyword varname">position</var>和<var class="keyword varname">occurrence</var>的默认值都是1，表示搜索从<var class="keyword varname">string</var>的第一个字符开始查找<var class="keyword varname">substring</var>的第一次出现。返回值是相对于<var class="keyword varname">string</var>开头的位置，它与<var class="keyword varname">position</var>的值无关，并且以字符数来表示。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT instr('Greenplum', 'e') 
+FROM ClientDB;</pre>
+
+        <p class="p">返回3，'e'的第一次出现</p>
+
+        <pre class="pre codeblock">SELECT instr('Greenplum', 'e',1,2)
+FROM ClientDB;</pre>
+
+        <p class="p">返回4，'e'的第二次出现</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic14">
+    <h2 class="title topictitle2">last_day</h2>
+
+    <div class="body">
+      <p class="p">返回在一个给定月份中最后一天的Oracle兼容函数。</p>
+
+      <div class="section" id="topic14__me147037">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">last_day(<var class="keyword varname">date_expression</var>) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回由<var class="keyword varname">date_expression</var>指定的月份的最后一天。</p>
+
+        <p class="p">返回类型总是<samp class="ph codeph">DATE</samp>，与<var class="keyword varname">date_expression</var>的日期类型无关。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_expression</var></dt>
+
+            <dd class="dd pd">用于计算月份最后一天的日期值。这可以是任何能被隐式转换为<samp class="ph codeph">DATE</samp>的表达式。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT name, hiredate, last_day(hiredate) "Option Date"
+FROM employees;</pre>
+
+        <p class="p">返回<samp class="ph codeph">name</samp>、<samp class="ph codeph">hiredate</samp>和<samp class="ph codeph">hiredate</samp>的月份的<samp class="ph codeph">last_day</samp>，并且命名为" <samp class="ph codeph">Option Date</samp>"。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic15">
+    <h2 class="title topictitle2">listagg</h2>
+
+    <div class="body">
+      <p class="p">把文本值聚集成一个串的Oracle兼容函数。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数是一个重载函数。有两个Oracle兼容的<samp class="ph codeph">listagg</samp>函数，一个要单一参数（要被聚集的文本，见下文），另一个要两个参数（要被聚集的文本和定界符，见下一页）。</div>
+
+      <div class="section" id="topic15__me150811">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">listagg(<var class="keyword varname">text</var>) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数会把文本值聚集成一个串。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">text</var></dt>
+
+            <dd class="dd pd">要被聚集到一个串中的文本值。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT listagg(t) FROM (VALUES('abc'), ('def')) as l(t) </pre>
+
+        <p class="p">返回：<samp class="ph codeph">abcdef</samp></p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic16">
+    <h2 class="title topictitle2">listagg (2)</h2>
+
+    <div class="body">
+      <p class="p">把文本值聚集成一个串的Oracle兼容函数，文本值之间用第二个参数指定的定界符分隔。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数是一个重载函数。有两个Oracle兼容的<samp class="ph codeph">listagg</samp>函数，一个要单一参数（要被聚集的文本，见上一页），另一个要两个参数（要被聚集的文本和定界符，见上文）。</div>
+
+      <div class="section" id="topic16__me151350">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">listagg(<var class="keyword varname">text</var>, <var class="keyword varname">separator</var>) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数把文本值聚集成一个字符串，每个都用第二个参数（<var class="keyword varname">separator</var>）中指定的分隔符分隔。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">text</var></dt>
+
+            <dd class="dd pd">要被聚集到一个串中的文本值。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">separator</var></dt>
+
+            <dd class="dd pd">用来分隔文本值的分隔符。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT oracompat.listagg(t, '.') FROM (VALUES('abc'), 
+('def')) as l(t)</pre>
+
+        <p class="p">返回：<samp class="ph codeph">abc.def</samp></p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic17">
+    <h2 class="title topictitle2">lnnvl</h2>
+
+    <div class="body">
+      <p class="p">如果参数为假或者NULL就返回<samp class="ph codeph">true</samp>的Oracle兼容函数，否则返回<samp class="ph codeph">false</samp>。</p>
+
+      <div class="section" id="topic17__me151066">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">lnnvl(<var class="keyword varname">condition</var>) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数有一个参数作为条件，如果条件为假或者NULL这个函数返回<samp class="ph codeph">true</samp>，如果条件为真这个函数返回<samp class="ph codeph">false</samp>。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">condition</var></dt>
+
+            <dd class="dd pd">任何计算得到<samp class="ph codeph">true</samp>、<samp class="ph codeph">false</samp>或者NULL的条件。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT lnnvl(true) </pre>
+
+        <p class="p">返回：<samp class="ph codeph">false</samp></p>
+
+        <pre class="pre codeblock">SELECT lnnvl(NULL) </pre>
+
+        <p class="p">返回：<samp class="ph codeph">true</samp></p>
+
+        <pre class="pre codeblock">SELECT lnnvl(false) </pre>
+
+        <p class="p">返回：<samp class="ph codeph">true</samp></p>
+
+        <pre class="pre codeblock">SELECT (3=5)               </pre>
+
+        <p class="p">返回：<samp class="ph codeph">true</samp></p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic18">
+    <h2 class="title topictitle2">months_between </h2>
+
+    <div class="body">
+      <p class="p">计算两个给定日期之间的月数的Oracle兼容函数。</p>
+
+      <div class="section" id="topic18__me147112">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">months_between(<var class="keyword varname">date_expression1</var>, <var class="keyword varname">date_expression2</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回<var class="keyword varname">date_expression1</var>和<var class="keyword varname">date_expression2</var>之间的月数。 </p>
+
+        <p class="p">如果<var class="keyword varname">date_expression1</var>晚于<var class="keyword varname">date_expression2</var>，则结果为正。</p>
+
+        <p class="p">如果<var class="keyword varname">date_expression1</var>早于<var class="keyword varname">date_expression2</var>，则结果为负。 </p>
+
+        <p class="p">如果<var class="keyword varname">date_expression1</var>和<var class="keyword varname">date_expression2</var>是月份中相同的一日或者都是各自月份中的最后一日，那么结果总是一个整数。否则该函数会基于一个有31天的月来计算小数部分。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm">
+<var class="keyword varname">date_expression1</var>, <var class="keyword varname">date_expression2</var>
+</dt>
+
+            <dd class="dd pd">用来计算月数的日期值。这可以是任何能被隐式转换为<samp class="ph codeph">DATE</samp>的表达式。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT months_between
+    (to_date ('2003/07/01', 'yyyy/mm/dd'), 
+    to_date ('2003/03/14', 'yyyy/mm/dd'));</pre>
+
+        <p class="p">返回 July 1, 2003 和 March 14, 2014 之间的月数。</p>
+
+        <pre class="pre codeblock">SELECT * FROM employees 
+    where months_between(hire_date, leave_date) &lt;12;</pre>
+
+        <p class="p">返回<samp class="ph codeph">hire_date</samp>和<samp class="ph codeph">leave_date</samp>之间的月数。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic19">
+    <h2 class="title topictitle2">nanvl</h2>
+
+    <div class="body">
+      <p class="p">在碰到一个非数字值时将一个浮点数替换成一个值的Oracle兼容函数。</p>
+
+      <div class="section" id="topic19__me147257">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">nanvl(<var class="keyword varname">float1</var>, <var class="keyword varname">float2</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数求一个浮点数（<var class="keyword varname">float1</var>，例如<samp class="ph codeph">BINARY_FLOAT</samp>或者<samp class="ph codeph">BINARY_DOUBLE</samp>）的值。如果它是一个非数字（'not a number'，NaN），该函数返回<var class="keyword varname">float2</var>。这个函数最常被用来把非数字值转换为NULL或者0。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">float1</var></dt>
+
+            <dd class="dd pd">要求值的<samp class="ph codeph">BINARY_FLOAT</samp>或者<samp class="ph codeph">BINARY_NUMBER</samp>。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">float2</var></dt>
+
+            <dd class="dd pd">如果<var class="keyword varname">float1</var>不是一个数字时要返回的值。</dd>
+
+            <dd class="dd pd">
+<var class="keyword varname">float1</var>和<var class="keyword varname">float2</var>可以是任意数字数据类型或者任意能被隐式转换为数字数据类型的非数字数据类型。该函数用最高数字优先来决定参数，隐式转换其余参数为该数据类型，并且返回该数据类型。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT nanvl(binary1, 0)
+FROM MyDB;</pre>
+
+        <p class="p">如果<samp class="ph codeph">binary1</samp>域包含一个非数字值，返回0。否则，它会返回<samp class="ph codeph">binary1</samp>的值。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic20">
+    <h2 class="title topictitle2">next_day</h2>
+
+    <div class="body">
+      <p class="p">这个Oracle兼容函数返回一个日期后面下一个指定的星期几所对应的日期。</p>
+
+      <p class="p">这一节描述用一个字符串参数来使用这个函数，用一个整数参数使用这个函数的细节请见下一节。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数是一个重载函数。有两个Oracle兼容的<samp class="ph codeph">next_day</samp>函数，一个要求一个日期和一个星期几作为其参数（见下文），另一个要求一个日期和一个整数作为其参数（见下一节）。</div>
+
+      <div class="section" id="topic20__me147322">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">next_day(<var class="keyword varname">date_expression</var>, <samp class="ph codeph">day_of_the_week</samp>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回在<var class="keyword varname">date_expression</var>之后发生的第一个<samp class="ph codeph">day_of_the_week</samp>（Tuesday、Wednesday等等）。 </p>
+
+        <p class="p">星期几必须用英文指定。</p>
+
+        <p class="p">星期几的大小写没有关系。</p>
+
+        <p class="p">返回类型总是<samp class="ph codeph">DATE</samp>，它与<var class="keyword varname">date_expression</var>的数据类型无关。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_expression</var></dt>
+
+            <dd class="dd pd">开始日期。这可以是任何能被隐式转换成<samp class="ph codeph">DATE</samp>的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">day_of_the_week</var></dt>
+
+            <dd class="dd pd">一个包含星期几的英文字符串，例如'Tuesday'。<var class="keyword varname">day_of_the_week</var>是大小写无关的。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT name, next_day(hiredate,"MONDAY") "Second Week Start"
+FROM employees;</pre>
+
+        <p class="p">返回<samp class="ph codeph">name</samp>以及<samp class="ph codeph">hiredate</samp>之后的下一个星期一的<samp class="ph codeph">date</samp>（标记为"<samp class="ph codeph">Second Week Start</samp>"）。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic21">
+    <h2 class="title topictitle2">next_day (2)</h2>
+
+    <div class="body">
+      <p class="p">这个Oracle兼容函数把给定天数加到一个日期并且返回下一天的日期。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数是一个重载函数。有两个Oracle兼容的<samp class="ph codeph">next_day</samp>函数，一个要求一个日期和一个星期几作为其参数（见上一节），另一个要求一个日期和一个整数作为其参数（见下文）。</div>
+
+      <div class="section" id="topic21__me147388">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">next_day(<var class="keyword varname">date_expression</var>, <var class="keyword varname">days_to_add</var>) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数把<var class="keyword varname">days_to_add</var>的数字加到<var class="keyword varname">date_expression</var>并且返回结果之后一天的日期。</p>
+
+        <p class="p">返回类型总是<samp class="ph codeph">DATE</samp>，它与<var class="keyword varname">date_expression</var>的数据类型无关。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_expression</var></dt>
+
+            <dd class="dd pd">开始日期。这可以是任何能被隐式转换成<samp class="ph codeph">DATE</samp>的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">days_to_add</var></dt>
+
+            <dd class="dd pd">要被加到<var class="keyword varname">date_expression</var>的天数。这是一个整数或者任何能被隐式转换为一个整数的值。这个参数可以是正值或者负值。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT name, next_day(hiredate,90) "Benefits Eligibility 
+Date"
+FROM EMPLOYEES;</pre>
+
+        <p class="p">返回<samp class="ph codeph">name</samp>以及从<samp class="ph codeph">hiredate</samp>开始90天之后的<samp class="ph codeph">日期</samp>（标记为"<samp class="ph codeph">Benefits Eligibility Date</samp>"）。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic22">
+    <h2 class="title topictitle2">nlssort</h2>
+
+    <div class="body">
+      <p class="p">根据指定排序规则排序数据的Oracle兼容函数。</p>
+
+      <div class="section" id="topic22__me152445">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">nlssort (<var class="keyword varname">variable</var>, <var class="keyword varname">collation</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数根据一个指定排序规则排序数据。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">variable</var></dt>
+
+            <dd class="dd pd">要排序的数据。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">collation</var></dt>
+
+            <dd class="dd pd">用于排序的排序规则。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">CREATE TABLE test (name text);
+INSERT INTO test VALUES('Anne'), ('anne'), ('Bob'), ('bob');
+SELECT * FROM test ORDER BY nlssort(name, 'en_US.UTF-8');
+ anne
+ Anne
+ bob
+ Bob
+
+SELECT * FROM test ORDER BY nlssort(name, 'C');
+ Anne
+ Bob
+ anne
+ bob </pre>
+
+        <p class="p">在第一个例子中指定的是UTF-8排序规则。这会把字符进行分组而不考虑其大小写。</p>
+
+        <p class="p">在第二个例子中指定的是ASCII (C) 排序规则。这会根据ASCII顺序排序。其结果是大写字符被排在小写字符之前。</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic23">
+    <h2 class="title topictitle2">nvl</h2>
+
+    <div class="body">
+      <p class="p">当一个表达式计算为<samp class="ph codeph">null</samp>时将其替换为指定值的Oracle兼容函数。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数和PostgreSQL的<samp class="ph codeph">coalesce</samp>函数类似。</div>
+
+      <div class="section" id="topic23__me144331">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">nvl(<var class="keyword varname">expression_to_evaluate</var>, <var class="keyword varname">null_replacement_value</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数会计算<var class="keyword varname">expression_to_evaluate</var>。如果它是<samp class="ph codeph">null</samp>，该函数返回<var class="keyword varname">null_replacement_value</var>；否则它返回<var class="keyword varname">expression_to_evaluate</var>。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expression_to_evaluate</var></dt>
+
+            <dd class="dd pd">要计算的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">null_replacement_value</var></dt>
+
+            <dd class="dd pd">如果<var class="keyword varname">expression_to_evaluate</var>时<samp class="ph codeph">null</samp>时要返回的值。</dd>
+
+          
+        </dl>
+
+        <p class="p"><var class="keyword varname">expression_to_evaluate</var>和<var class="keyword varname">null_replacement_value</var>都必须是同种数据类型。</p>
+
+        
+        <pre class="pre codeblock">SELECT nvl(contact_name,'None') 
+FROM clients;
+SELECT nvl(amount_past_due,0) 
+FROM txns;
+SELECT nvl(nickname, firstname) 
+FROM contacts;</pre>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic24">
+    <h2 class="title topictitle2">nvl2 </h2>
+
+    <div class="body">
+      <p class="p">为空值和非空值返回可替代值的Oracle兼容函数。</p>
+
+      <div class="section" id="topic24__me149341">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">nvl2(<var class="keyword varname">expression_to_evaluate</var>, <var class="keyword varname">non_null_replacement_value</var>,
+     <var class="keyword varname">null_replacement_value</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数计算<var class="keyword varname">expression_to_evaluate</var>。如果它不是<samp class="ph codeph">null</samp>，该函数返回<var class="keyword varname">non_null_replacement_value</var>；否则它返回<var class="keyword varname">null_replacement_value</var>。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">expression_to_evaluate</var></dt>
+
+            <dd class="dd pd">要计算的表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">non_null_replacement_value</var></dt>
+
+            <dd class="dd pd">如果<var class="keyword varname">expression_to_evaluate</var>不是<samp class="ph codeph">null</samp>时要返回的值。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">null_replacement_value</var></dt>
+
+            <dd class="dd pd">如果<var class="keyword varname">expression_to_evaluate</var>是<samp class="ph codeph">null</samp>时要返回的值。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">select nvl2(unit_number,'Multi Unit','Single Unit') 
+from clients;</pre>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+        
+        <p class="p"><samp class="ph codeph"><a class="xref" href="#topic9">decode</a></samp></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic25">
+    <h2 class="title topictitle2">oracle.substr</h2>
+
+    <div class="body">
+      <p class="p">这个Oracle兼容函数抽取一个字符串的一部分。</p>
+
+      <div class="section" id="topic25__me147448">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">oracle.substr(<var class="keyword varname">string</var>, [<var class="keyword varname">start</var> [,<var class="keyword varname">char_count</var>]])</pre>
+
+        
+        <p class="p">这个Oracle兼容函数抽取一个字符串的一部分。</p>
+
+        <p class="p">如果<var class="keyword varname">start</var>是0，它被计算为1。</p>
+
+        <p class="p">如果<var class="keyword varname">start</var>是负值，开始位置是从字符串的末尾向前移动<var class="keyword varname">start</var>个字符的位置。</p>
+
+        <p class="p">如果<var class="keyword varname">char_count</var>没有被传递给该函数，从开始位置到字符串末尾的所有字符都会被返回。</p>
+
+        <p class="p">如果<var class="keyword varname">char_count</var>小于1，返回空。</p>
+
+        <p class="p">如果<var class="keyword varname">start</var>或者<var class="keyword varname">char_count</var>是一个数字但不是一个整数，它们的值会被分解成整数。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">string</var></dt>
+
+            <dd class="dd pd">要从中进行抽取的字符串。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">start</var></dt>
+
+            <dd class="dd pd">指定该字符串中的开始位置的整数。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">char_count</var></dt>
+
+            <dd class="dd pd">指定要抽取的字符数的整数。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">oracle.substr(name,1,15) </pre>
+
+        <p class="p">返回<samp class="ph codeph">name</samp>的前15个字符。</p>
+
+        <pre class="pre codeblock">oracle.substr("Greenplum",-4,4) </pre>
+
+        <p class="p">返回 "<samp class="ph codeph">plum</samp>".</p>
+
+        <pre class="pre codeblock">oracle.substr(name,2) </pre>
+
+        <p class="p">从第二个字符开始，返回<samp class="ph codeph">name</samp>的所有字符。</p>
+
+        
+        <p class="p">PostgreSQL的<samp class="ph codeph"><a class="xref" href="https://www.postgresql.org/docs/8.3/static/functions-string.html" target="_blank">substr</a></samp>（与Oracle不兼容）</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic26">
+    <h2 class="title topictitle2">reverse </h2>
+
+    <div class="body">
+      <p class="p">以逆序返回输入字符串的Oracle兼容函数。</p>
+
+      <div class="section" id="topic26__me147533">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">reverse (<var class="keyword varname">string</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数以逆序返回输入字符串（<var class="keyword varname">string</var>）。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">string</var></dt>
+
+            <dd class="dd pd">输入字符串。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT reverse('gnirts') 
+FROM ClientDB;</pre>
+
+        <p class="p">返回 <samp class="ph codeph">'string'</samp>'</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic27">
+    <h2 class="title topictitle2">round</h2>
+
+    <div class="body">
+      <p class="p">把一个日期取整到一个指定度量单位（日、周等等）的Oracle兼容函数。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 这个函数是一个重载函数。它与Postgres的This function is an overloaded function. It shares the
+        same name with the Postgres <samp class="ph codeph">round</samp>数学函数共享相同的名称，后者把数字输入圆整到最近的整数或者最近的x个小数位（可选）。</div>
+
+      <div class="section" id="topic27__me147575">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">round (<var class="keyword varname">date_time_expression</var>, [<var class="keyword varname">unit_of_measure</var>]) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数把<var class="keyword varname">date_time_expression</var>圆整到最近的<var class="keyword varname">unit_of_measure</var>（日、周等等）。如果没有指定<var class="keyword varname">unit_of_measure</var>，<var class="keyword varname">date_time_expression</var>会被圆整到最近的日。它根据格里高利历的规则操作。</p>
+
+        <p class="p">如果<var class="keyword varname">date_time_expression</var>的数据类型是<samp class="ph codeph">TIMESTAMP</samp>，返回值总是数据类型<samp class="ph codeph">TIMESTAMP</samp>。</p>
+
+        <p class="p">如果<var class="keyword varname">date_time_expression</var>的数据类型是<samp class="ph codeph">DATE</samp>，返回值总是数据类型<samp class="ph codeph">DATE</samp>。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_time_expression</var></dt>
+
+            <dd class="dd pd">要圆整的日期。这可以是能被隐式转换成<samp class="ph codeph">DATE</samp>或者<samp class="ph codeph">TIMESTAMP</samp>的任意表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">unit_of_measure</var></dt>
+
+            <dd class="dd pd">圆整要应用的度量单位。如果没有指定，那么<var class="keyword varname">date_time_expression</var>会被圆整到最近的日。合法的参数有：</dd>
+
+          
+        </dl>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic27__me147585" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">表 2. 合法参数</span></caption>
+            
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="116pt" id="d484003e2967">单位</th>
+
+                <th class="entry" valign="top" width="165pt" id="d484003e2970">合法参数</th>
+
+                <th class="entry" valign="top" width="165pt" id="d484003e2973">舍入规则</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Year</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">SYYYY, YYYY, YEAR, SYEAR, YYY, YY,
+                  Y</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">7月1日之前的舍掉</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">ISO Year</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">IYYY, IY, I</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 "> </td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Quarter</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">Q</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">当季度第二个月的第16天之前的舍掉</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Month</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">MONTH, MON, MM, RM</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">当月的第16天之前的舍掉</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Week</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">WW</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">当年第一天对应的星期几</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">IW</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">IW</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">该ISO年第一天对应的星期几</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">W</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">W</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">当月第一天对应的星期几</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Day</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">DDD, DD, J</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">舍入到最近的一天</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Start day of the week</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">DAY, DY, D</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">舍入到最近的周开始日（周日）</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Hour</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">HH, HH12, HH24</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">舍入到下一个小时</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="116pt" headers="d484003e2967 ">Minute</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2970 ">MI</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e2973 ">舍入到下一分钟</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+        
+        <pre class="pre codeblock">SELECT round(TO_DATE('27-OCT-00','DD-MON-YY'), 'YEAR')
+FROM ClientDB;</pre>
+
+        <p class="p">返回 '01-JAN-01' （27 Oct 00 被舍入成接下来一年的第一天（<samp class="ph codeph">YEAR</samp>））</p>
+
+        <pre class="pre codeblock">SELECT round('startdate','Q')
+FROM ClientDB;</pre>
+
+        <p class="p">返回 '01-JUL-92' （<samp class="ph codeph">startdate</samp>被舍入成该季度（<samp class="ph codeph">Q</samp>）的第一天）</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+        
+        <p class="p">PostgreSQL <samp class="ph codeph"><a class="xref" href="https://www.postgresql.org/docs/8.3/static/functions-math.html" target="_blank">round</a></samp>（与Oracle不兼容）</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic28">
+    <h2 class="title topictitle2">sinh</h2>
+
+    <div class="body">
+      <p class="p">返回一个给定数字的双曲正弦值的Oracle兼容函数。</p>
+
+      <div class="section" id="topic28__me147492">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">sinh(<var class="keyword varname">float8</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回输入的8位浮点数（<var class="keyword varname">float8</var>）的双曲正弦值。</p>
+
+        <div class="note note">
+<span class="notetitle">注意：</span> 
+          <p class="p">这个函数默认就可用，不需要运行Oracle兼容性安装器就能访问这个函数。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">float8</var></dt>
+
+            <dd class="dd pd">输入的数字。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT sinh(3) 
+FROM ClientDB;</pre>
+
+        <p class="p">返回<samp class="ph codeph">'10.0178749274099'</samp>'（3的双曲正弦）</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic29">
+    <h2 class="title topictitle2">tanh</h2>
+
+    <div class="body">
+      <p class="p">返回一个给定数字的双曲正切值的Oracle兼容函数。</p>
+
+      <div class="section" id="topic29__me147700">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">tanh(<var class="keyword varname">float8</var>)</pre>
+
+        
+        <p class="p">这个Oracle兼容函数返回输入的8位浮点数（<var class="keyword varname">float8</var>）的双曲正切值。</p>
+
+        <div class="note note">
+<span class="notetitle">注意：</span> 
+          <p class="p">这个函数默认就可用，不需要运行Oracle兼容性安装器就能访问这个函数。</p>
+
+        </div>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">float8</var></dt>
+
+            <dd class="dd pd">输入的数字。</dd>
+
+          
+        </dl>
+
+        
+        <pre class="pre codeblock">SELECT tanh(3)
+FROM ClientDB;</pre>
+
+        <p class="p">返回<samp class="ph codeph">'0.99505475368673'</samp>' （3的双曲正切）</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="topic nested1" xml:lang="en" lang="en" id="topic30">
+    <h2 class="title topictitle2">trunc</h2>
+
+    <div class="body">
+      <p class="p">将一个日期截断到一种特定度量单位（日、周、小时等等）的Oracle兼容函数。</p>
+
+      <div class="note note">
+<span class="notetitle">注意：</span> 
+        <p class="p">这个函数是一个重载函数。它与Postgres的
+            <samp class="ph codeph">trunc</samp>以及Oracle的<samp class="ph codeph">trunc</samp>算数函数共享相同的名称。这些函数都把数字输入截断到最近的整数或者可选地截断到最近的x个小数位置。</p>
+
+      </div>
+
+      <div class="section" id="topic30__me144477">
+<h3 class="title sectiontitle">概要</h3>
+        
+        <pre class="pre codeblock">trunc(<var class="keyword varname">date_time_expression</var>, [<var class="keyword varname">unit_of_measure</var>]) </pre>
+
+        
+        <p class="p">这个Oracle兼容函数截断<var class="keyword varname">date_time_expression</var>到最近的<var class="keyword varname">unit_of_measure</var>（日、周等等）。如果没有指定<var class="keyword varname">unit_of_measure</var>，<var class="keyword varname">date_time_expression</var>会被截断到最近的日子。它会根据格里高利历的规则来操作。</p>
+
+        <p class="p">如果<var class="keyword varname">date_time_expression</var>的数据类型是<samp class="ph codeph">TIMESTAMP</samp>，返回值的类型将总是数据类型<samp class="ph codeph">TIMESTAMP</samp>且被截断到小时/分钟级别。</p>
+
+        <p class="p">如果<var class="keyword varname">date_time_expression</var>的数据类型是<samp class="ph codeph">DATE</samp>，返回值的类型将总是数据类型<samp class="ph codeph">DATE</samp>。</p>
+
+        
+        <dl class="dl parml">
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">date_time_expression</var></dt>
+
+            <dd class="dd pd">要截断的日期。这可以是能被隐式转换为<samp class="ph codeph">DATE</samp>或者<samp class="ph codeph">TIMESTAMP</samp>的任意表达式。</dd>
+
+          
+          
+            <dt class="dt pt dlterm"><var class="keyword varname">unit_of_measure</var></dt>
+
+            <dd class="dd pd">应用于截断的度量单位。如果没有指定，那么<var class="keyword varname">date__time_expression</var>会被截断到最近的日子。合法的格式为：</dd>
+
+          
+        </dl>
+
+        
+<div class="tablenoborder">
+<table cellpadding="4" cellspacing="0" summary="" id="topic30__me144487" class="table" frame="border" border="1" rules="all">
+<caption><span class="tablecap">表 3. 合法的格式参数</span></caption>
+            
+            
+            <thead class="thead" align="left">
+              <tr class="row">
+                <th class="entry" valign="top" width="128pt" id="d484003e3438">单位</th>
+
+                <th class="entry" valign="top" width="165pt" id="d484003e3441">合法参数</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody class="tbody">
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Year</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">SYYYY, YYYY, YEAR, SYEAR, YYY, YY,
+                  Y</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">ISO Year</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">IYYY, IY, I</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Quarter</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">Q</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Month</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">MONTH, MON, MM, RM</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Week</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">WW</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">IW</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">IW</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">W</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">W</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Day</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">DDD, DD, J</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Start day of the week</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">DAY, DY, D</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Hour</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">HH, HH12, HH24</td>
+
+              </tr>
+
+              <tr class="row">
+                <td class="entry" valign="top" width="128pt" headers="d484003e3438 ">Minute</td>
+
+                <td class="entry" valign="top" width="165pt" headers="d484003e3441 ">MI</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+        
+        <pre class="pre codeblock">SELECT TRUNC(TO_DATE('27-OCT-92','DD-MON-YY'), 'YEAR')
+FROM ClientDB;</pre>
+
+        <p class="p">返回 '01-JAN-92' （27 Oct 92 被截断到该年的第一天（<samp class="ph codeph">YEAR</samp>））</p>
+
+        <pre class="pre codeblock">SELECT TRUNC(startdate,'Q')
+FROM ClientDB;</pre>
+
+        <p class="p">返回 '1992-07-01' （<samp class="ph codeph">startdate</samp>被截断到该季度的第一天（<samp class="ph codeph">Q</samp>），取决于date_style设置）</p>
+
+        
+        <p class="p">这个命令与Oracle语法兼容，提供它是为了方便使用。</p>
+
+        
+        <p class="p">PostgreSQL <samp class="ph codeph"><a class="xref" href="https://www.postgresql.org/docs/8.3/static/functions-math.html" target="_blank">trunc</a></samp>（与Oracle不兼容）</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+        
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>
